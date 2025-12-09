@@ -34,7 +34,7 @@ const days = [
 
 function ReminderBadge({ count = 0, highlight = false }: { count?: number; highlight?: boolean }) {
   if (!count) {
-    return <div className="h-6" />;
+    return <div className="w-6 h-6" />;
   }
 
   return (
