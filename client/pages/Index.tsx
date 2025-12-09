@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Index() {
   return (
-    <div className="min-h-screen flex flex-col bg-white overflow-y-auto">
+    <div className="min-h-screen flex flex-col bg-white overflow-hidden">
       {/* Status Bar */}
       <div className="flex justify-between items-center px-6 py-3 bg-[#EBEBF5]">
         <div className="text-xs font-normal">9:41</div>
@@ -25,115 +25,66 @@ export default function Index() {
         </div>
       </div>
 
-      {/* Logo Section */}
-      <div className="flex flex-col items-center justify-center pt-12 pb-6">
-        <img 
-          src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800" 
-          alt="School Mate Logo" 
-          className="w-28 h-28 mb-4"
-        />
-        <div className="text-center">
-          <div className="flex items-center justify-center gap-0.5 text-[32px] font-bold mb-2 leading-none">
-            <span className="text-[#FF7D7F]">SC</span>
-            <span className="text-[#FFC374]">HO</span>
-            <span className="text-[#7CED91]">OL</span>
-            <span className="text-[#010618]"> </span>
-            <span className="text-[#536EFF]">MA</span>
-            <span className="text-[#536EFF]">TE</span>
-          </div>
-          <p className="text-xs text-slate-600 flex items-center justify-center gap-1">
-            <span>✨</span>
-            <span>쉽게 학교 3D백 바라보기 (즐겁)</span>
-          </p>
-        </div>
-      </div>
-
-      {/* Navigation Cards Grid */}
-      <div className="px-6 pb-6">
-        <div className="grid grid-cols-2 gap-6">
-          {/* 일정 Card */}
-          <Link to="/schedule" className="relative">
-            {/* Ring binder holes */}
-            <div className="absolute -top-1 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-              {[...Array(4)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="w-3 h-5 rounded-md bg-white border-r border-b border-slate-300 shadow-sm"
-                />
-              ))}
-            </div>
-            <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fe5b1b32ad6c74a479a7bf5f02f606293?format=webp&width=800" 
-              alt="일정" 
-              className="w-full rounded-xl border-[5px] border-white shadow-[0_8px_12px_6px_rgba(0,0,0,0.15),0_4px_4px_0_rgba(0,0,0,0.30)]"
-            />
-          </Link>
-
-          {/* 시간표 Card */}
-          <Link to="/timetable" className="relative">
-            {/* Ring binder holes */}
-            <div className="absolute -top-1 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-              {[...Array(4)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="w-3 h-5 rounded-md bg-white border-r border-b border-slate-300 shadow-sm"
-                />
-              ))}
-            </div>
-            <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F1e94785afedf4f0886ae0ecbfcdbd64c?format=webp&width=800" 
-              alt="시간표" 
-              className="w-full rounded-xl border-[5px] border-white shadow-[0_6px_10px_4px_rgba(0,0,0,0.15),0_2px_3px_0_rgba(0,0,0,0.30)]"
-            />
-          </Link>
-
-          {/* 리마인더 Card */}
-          <Link to="/reminder" className="relative">
-            {/* Ring binder holes */}
-            <div className="absolute -top-1 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-              {[...Array(4)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="w-3 h-5 rounded-md bg-white border-r border-b border-slate-300 shadow-sm"
-                />
-              ))}
-            </div>
-            <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ffd21b7a522404c22baadca1259a59266?format=webp&width=800" 
-              alt="리마인더" 
-              className="w-full rounded-xl border-[5px] border-white shadow-[0_8px_12px_6px_rgba(0,0,0,0.15),0_4px_4px_0_rgba(0,0,0,0.30)]"
-            />
-          </Link>
-
-          {/* 게시판 Card */}
-          <Link to="/board" className="relative">
-            {/* Ring binder holes */}
-            <div className="absolute -top-1 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-              {[...Array(4)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="w-3 h-5 rounded-md bg-white border-r border-b border-slate-300 shadow-sm"
-                />
-              ))}
-            </div>
-            <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F6a91e79c89444c628bc46138f251a42f?format=webp&width=800" 
-              alt="게시판" 
-              className="w-full rounded-xl border-[5px] border-white shadow-[0_6px_10px_4px_rgba(0,0,0,0.15),0_2px_3px_0_rgba(0,0,0,0.30)]"
-            />
-          </Link>
-        </div>
-      </div>
-
-      {/* Login Button */}
-      <div className="flex justify-center pb-12">
-        <button className="shadow-[0_6px_10px_4px_rgba(0,0,0,0.15),0_2px_3px_0_rgba(0,0,0,0.30)]">
+      {/* Main Content Container */}
+      <div className="flex-1 flex flex-col relative px-6">
+        {/* Logo - Positioned to overlap with cards */}
+        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-0">
           <img 
-            src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800" 
-            alt="LOGIN" 
-            className="h-[70px] w-auto"
+            src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800" 
+            alt="School Mate Logo" 
+            className="w-44 h-44"
           />
-        </button>
+        </div>
+
+        {/* Navigation Cards Grid */}
+        <div className="relative z-10 pt-32 flex-1 flex flex-col items-center justify-center">
+          <div className="grid grid-cols-2 gap-6 w-full max-w-xs">
+            {/* 일정 Card */}
+            <Link to="/schedule" className="relative group">
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fe5b1b32ad6c74a479a7bf5f02f606293?format=webp&width=800" 
+                alt="일정" 
+                className="w-full rounded-2xl border-[6px] border-white drop-shadow-lg"
+              />
+            </Link>
+
+            {/* 시간표 Card */}
+            <Link to="/timetable" className="relative group">
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F1e94785afedf4f0886ae0ecbfcdbd64c?format=webp&width=800" 
+                alt="시간표" 
+                className="w-full rounded-2xl border-[6px] border-white drop-shadow-lg"
+              />
+            </Link>
+
+            {/* 리마인더 Card */}
+            <Link to="/reminder" className="relative group">
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ffd21b7a522404c22baadca1259a59266?format=webp&width=800" 
+                alt="리마인더" 
+                className="w-full rounded-2xl border-[6px] border-white drop-shadow-lg"
+              />
+            </Link>
+
+            {/* 게시판 Card */}
+            <Link to="/board" className="relative group">
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F6a91e79c89444c628bc46138f251a42f?format=webp&width=800" 
+                alt="게시판" 
+                className="w-full rounded-2xl border-[6px] border-white drop-shadow-lg"
+              />
+            </Link>
+          </div>
+
+          {/* Login Button */}
+          <button className="mt-8 drop-shadow-lg">
+            <img 
+              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800" 
+              alt="LOGIN" 
+              className="h-16 w-auto"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
