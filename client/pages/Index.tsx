@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 
-const FIREBASE_APP_URL =
-  import.meta.env.VITE_FIREBASE_APP_URL ?? "https://schoolapp-e9fa3.web.app/";
+const FIREBASE_APP_URL = import.meta.env.VITE_FIREBASE_APP_URL;
+
+if (!FIREBASE_APP_URL) {
+  throw new Error("Firebase app URL is not configured");
+}
 
 export default function Index() {
   return (
@@ -115,7 +118,7 @@ export default function Index() {
                 if (!newWindow) {
                   window.location.href = FIREBASE_APP_URL;
                 }
-              } catch {
+              } catch (_error) {
                 window.location.href = FIREBASE_APP_URL;
               }
             }}
