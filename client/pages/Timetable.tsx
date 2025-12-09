@@ -127,7 +127,7 @@ export default function Timetable() {
       {/* Timetable */}
       <div className="flex-1 px-4 pb-4">
         <div className="w-full max-w-[420px] mx-auto flex flex-col gap-4">
-          <div className="flex items-end gap-0">
+          <div className="flex items-end gap-3">
             <div className="w-12" />
             <div className="grid flex-1 grid-cols-5 gap-3">
               {days.map((day) => (
