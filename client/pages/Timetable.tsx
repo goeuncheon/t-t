@@ -129,26 +129,17 @@ export default function Timetable() {
       </div>
 
       {/* Timetable */}
-      <div className="flex-1 px-4 pb-4 mt-0">
+      <div className="flex-1 px-4 pb-4 -mt-1">
         <div className="w-full max-w-[420px] mx-auto flex flex-col gap-3.5">
           <div className="grid grid-cols-[34px_minmax(0,1fr)] gap-0 items-end">
             <div />
-            <div className="grid grid-cols-5 gap-3 items-end -ml-4">
+            <div className="grid grid-cols-5 gap-4 -ml-4">
               {days.map((day) => (
-                <div key={day.date} className="flex justify-center">
-                  {day.isToday ? (
-                    <div className="h-24 w-full max-w-[76px] rounded-3xl bg-[#80B3FF] px-2 py-2 flex flex-col items-center justify-between">
-                      <div className="text-2xl font-bold text-white leading-none">{day.date}</div>
-                      <div className="text-xs font-bold text-white">{day.day}</div>
-                      <div className="w-5 h-5 rounded-full bg-white/90" />
-                    </div>
-                  ) : (
-                    <div className="h-24 w-full max-w-[72px] flex flex-col items-center justify-between py-2">
-                      <div className="text-xl font-bold text-[#21283F] leading-none">{day.date}</div>
-                      <div className="text-xs text-slate-400">{day.day}</div>
-                      <div className="w-5 h-5 rounded-full border border-[#21283F]/25" />
-                    </div>
-                  )}
+                <div key={day.date} className="flex flex-col items-center gap-1">
+                  <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
+                    {day.date}
+                  </div>
+                  <div className={`text-xs ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>{day.day}</div>
                 </div>
               ))}
             </div>
@@ -158,18 +149,18 @@ export default function Timetable() {
             {timeSlots.map((slot, index) => (
               <div key={slot.label} className="flex flex-col gap-0.5">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
-                <div className="grid grid-cols-[32px_minmax(0,1fr)] gap-0 items-start">
-                  <div className="flex flex-col items-start justify-start text-left text-[#010618] leading-tight -ml-1 -mt-0.5">
+                <div className="grid grid-cols-[32px_minmax(0,1fr)] gap-0 items-start pt-1">
+                  <div className="flex flex-col items-start justify-start text-left text-[#010618] leading-tight -ml-1 mt-0.5">
                     <span className="text-[10px] font-semibold">{slot.label}</span>
                     <span className="text-[8px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
                   <div className="grid grid-cols-5 gap-4 -ml-4">
                     {days.map((day) => (
-                      <div key={`${day.date}-${slot.label}`} className="flex justify-center items-center py-0.5">
+                      <div key={`${day.date}-${slot.label}`} className="flex justify-center items-center pt-1 pb-0.5">
                         {day.isToday && index < classes.length ? (
                           <div
-                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[9px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden`}
+                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[9px] px-1.5 py-1.5 flex flex.col items-start justify-start gap-0.5 text-left overflow-hidden mt-0.5`}
                           >
                             <div className="w-full">
                               <AutoFitText
@@ -189,7 +180,7 @@ export default function Timetable() {
                             </div>
                           </div>
                         ) : (
-                          <div className="w-full max-w-[54px] h-[54px] rounded-[9px] bg-[#E6E6F0]" />
+                          <div className="w-full max-w-[54px] h-[54px] rounded-[9px] bg-[#E6E6F0] mt-0.5" />
                         )}
                       </div>
                     ))}
