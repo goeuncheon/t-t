@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const FIREBASE_APP_URL = import.meta.env.VITE_FIREBASE_APP_URL;
 
 if (!FIREBASE_APP_URL) {
-  throw new Error("Firebase app URL is not configured");
+  throw new Error("VITE_FIREBASE_APP_URL environment variable is not configured");
 }
 
 export default function Index() {
@@ -109,7 +109,7 @@ export default function Index() {
                 const newWindow = window.open(
                   FIREBASE_APP_URL,
                   "_blank",
-                  "noopener,noreferrer",
+                  "popup=1,width=800,height=600,noopener,noreferrer",
                 );
                 if (!newWindow) {
                   window.location.href = FIREBASE_APP_URL;
