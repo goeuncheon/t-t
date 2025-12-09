@@ -45,7 +45,7 @@ export default function Index() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fe5b1b32ad6c74a479a7bf5f02f606293?format=webp&width=800"
                 alt="일정"
-                className="w-full rounded-[40px] border-[8px] border-white shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
+                className="w-full"
               />
             </Link>
 
@@ -53,7 +53,7 @@ export default function Index() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F1e94785afedf4f0886ae0ecbfcdbd64c?format=webp&width=800"
                 alt="시간표"
-                className="w-full rounded-[40px] border-[8px] border-white shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
+                className="w-full"
               />
             </Link>
 
@@ -61,7 +61,7 @@ export default function Index() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ffd21b7a522404c22baadca1259a59266?format=webp&width=800"
                 alt="리마인더"
-                className="w-full rounded-[40px] border-[8px] border-white shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
+                className="w-full"
               />
             </Link>
 
@@ -69,7 +69,7 @@ export default function Index() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F6a91e79c89444c628bc46138f251a42f?format=webp&width=800"
                 alt="게시판"
-                className="w-full rounded-[40px] border-[8px] border-white shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
+                className="w-full"
               />
             </Link>
           </div>
