@@ -89,11 +89,11 @@ export default function Timetable() {
             ))}
           </div>
 
-          <div className="flex-1 flex flex-col gap-3">
+          <div className="flex-1 flex flex-col gap-2">
             {timeSlots.map((slot, index) => (
               <div key={slot.label} className="flex flex-col gap-1">
-                <div className="h-px bg-[#21283F] opacity-40" />
-                <div className="grid grid-cols-[56px_repeat(5,minmax(0,1fr))] gap-2 items-center">
+                <div className="w-full h-px bg-[#21283F] opacity-40" />
+                <div className="grid grid-cols-[56px_repeat(5,minmax(0,1fr))] gap-x-1.5 items-center">
                   <div className="flex flex-col text-left text-[#010618] leading-tight">
                     <span className="text-sm font-semibold">{slot.label}</span>
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
@@ -116,7 +116,7 @@ export default function Timetable() {
                 </div>
               </div>
             ))}
-            <div className="h-px bg-[#21283F] opacity-40" />
+            <div className="w-full h-px bg-[#21283F] opacity-40" />
           </div>
         </div>
       </div>
