@@ -87,7 +87,7 @@ export default function Board() {
       </div>
 
       {/* Search Bar */}
-      <div className="px-6 mb-6">
+      <div className="px-6 py-4">
         <div className="flex gap-2">
           <div className="flex-1 flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-full bg-white">
             <input
