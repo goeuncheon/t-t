@@ -61,9 +61,9 @@ export default function Schedule() {
       </div>
 
       {/* Calendar Section */}
-      <div className="px-6 py-6">
+      <div className="px-6 pt-4 pb-2 flex-shrink-0">
         {/* Date Header with Arrows */}
-        <div className="flex items-center justify-center gap-4 mb-6">
+        <div className="flex items-center justify-center gap-6">
           <button className="p-2">
             <svg className="w-6 h-6 text-[#010618]" viewBox="0 0 24 24" fill="currentColor">
               <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
