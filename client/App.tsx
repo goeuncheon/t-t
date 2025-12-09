@@ -5,7 +5,7 @@ import { createRoot, Root } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Schedule from "./pages/Schedule";
 import Timetable from "./pages/Timetable";
@@ -23,7 +23,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      {/* BrowserRouter → HashRouter로 변경 */}
+      <HashRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/schedule" element={<Schedule />} />
@@ -34,10 +35,10 @@ const App = () => (
           <Route path="/board" element={<Board />} />
           <Route path="/board/write" element={<BoardWrite />} />
           <Route path="/board/:tab/:id" element={<BoardDetail />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* 마지막 라우트: NotFound */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
