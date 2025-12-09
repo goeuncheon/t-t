@@ -72,8 +72,8 @@ export default function Timetable() {
             </svg>
           </button>
         </div>
-        <div className="mt-3 px-4 sm:px-8">
-          <div className="grid grid-cols-[56px_repeat(5,1fr)] gap-3 items-end">
+        <div className="mt-3 px-4 flex justify-center">
+          <div className="w-full max-w-[360px] grid grid-cols-[52px_repeat(5,1fr)] gap-2.5 items-end">
             <div className="h-6" />
             {days.map((day) => (
               <div key={day.date} className="flex flex-col items-center">
@@ -91,10 +91,10 @@ export default function Timetable() {
 
       {/* Timetable Grid */}
       <div className="px-4 mt-4">
-        <div className="mx-auto w-full max-w-[430px]">
-          <div className="grid grid-cols-[56px_repeat(5,1fr)] gap-2.5 sm:gap-3">
+        <div className="mx-auto w-full max-w-[360px]">
+          <div className="grid grid-cols-[52px_repeat(5,1fr)] gap-2">
             {/* Time Column */}
-            <div className="flex flex-col items-center gap-2 sm:gap-3 pt-14">
+            <div className="flex flex-col items-center gap-2 pt-12">
               {timeSlots.map((slot) => (
                 <div key={slot.label} className="flex flex-col items-center text-[#010618]">
                   <span className="text-sm font-bold">{slot.label}</span>
@@ -112,7 +112,7 @@ export default function Timetable() {
                   <div className="absolute inset-[-4px] sm:inset-[-6px] rounded-2xl bg-[#F4F4F8]"></div>
                 )}
 
-                <div className="relative flex flex-col gap-2 sm:gap-3">
+                <div className="relative flex flex-col gap-2">
                   {(day.isToday ? classes : timeSlots).map((entry, index) => {
                     if (day.isToday) {
                       const cls = entry as (typeof classes)[number];
