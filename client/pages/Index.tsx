@@ -26,65 +26,63 @@ export default function Index() {
       </div>
 
       {/* Main Content Container */}
-      <div className="flex-1 flex flex-col relative px-6">
-        {/* Logo - Positioned to overlap with cards */}
-        <div className="absolute top-8 left-1/2 -translate-x-1/2 z-0">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 py-8">
+        {/* Logo */}
+        <div className="mb-8 flex justify-center">
           <img 
             src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800" 
             alt="School Mate Logo" 
-            className="w-44 h-44"
+            className="w-56 h-56"
           />
         </div>
 
         {/* Navigation Cards Grid */}
-        <div className="relative z-10 pt-32 flex-1 flex flex-col items-center justify-center">
-          <div className="grid grid-cols-2 gap-6 w-full max-w-xs">
-            {/* 일정 Card */}
-            <Link to="/schedule" className="relative group">
-              <img 
-                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fe5b1b32ad6c74a479a7bf5f02f606293?format=webp&width=800" 
-                alt="일정" 
-                className="w-full rounded-2xl border-[6px] border-white drop-shadow-lg"
-              />
-            </Link>
-
-            {/* 시간표 Card */}
-            <Link to="/timetable" className="relative group">
-              <img 
-                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F1e94785afedf4f0886ae0ecbfcdbd64c?format=webp&width=800" 
-                alt="시간표" 
-                className="w-full rounded-2xl border-[6px] border-white drop-shadow-lg"
-              />
-            </Link>
-
-            {/* 리마인더 Card */}
-            <Link to="/reminder" className="relative group">
-              <img 
-                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ffd21b7a522404c22baadca1259a59266?format=webp&width=800" 
-                alt="리마인더" 
-                className="w-full rounded-2xl border-[6px] border-white drop-shadow-lg"
-              />
-            </Link>
-
-            {/* 게시판 Card */}
-            <Link to="/board" className="relative group">
-              <img 
-                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F6a91e79c89444c628bc46138f251a42f?format=webp&width=800" 
-                alt="게시판" 
-                className="w-full rounded-2xl border-[6px] border-white drop-shadow-lg"
-              />
-            </Link>
-          </div>
-
-          {/* Login Button */}
-          <button className="mt-8 drop-shadow-lg">
+        <div className="w-full max-w-xs grid grid-cols-2 gap-6">
+          {/* 일정 Card */}
+          <Link to="/schedule">
             <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800" 
-              alt="LOGIN" 
-              className="h-16 w-auto"
+              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fe5b1b32ad6c74a479a7bf5f02f606293?format=webp&width=800" 
+              alt="일정" 
+              className="w-full rounded-2xl border-4 border-white"
             />
-          </button>
+          </Link>
+
+          {/* 시간표 Card */}
+          <Link to="/timetable">
+            <img 
+              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F1e94785afedf4f0886ae0ecbfcdbd64c?format=webp&width=800" 
+              alt="시간표" 
+              className="w-full rounded-2xl border-4 border-white"
+            />
+          </Link>
+
+          {/* 리마인더 Card */}
+          <Link to="/reminder">
+            <img 
+              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ffd21b7a522404c22baadca1259a59266?format=webp&width=800" 
+              alt="리마인더" 
+              className="w-full rounded-2xl border-4 border-white"
+            />
+          </Link>
+
+          {/* 게시판 Card */}
+          <Link to="/board">
+            <img 
+              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F6a91e79c89444c628bc46138f251a42f?format=webp&width=800" 
+              alt="게시판" 
+              className="w-full rounded-2xl border-4 border-white"
+            />
+          </Link>
         </div>
+
+        {/* Login Button */}
+        <button className="mt-8">
+          <img 
+            src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800" 
+            alt="LOGIN" 
+            className="h-16 w-auto"
+          />
+        </button>
       </div>
     </div>
   );
