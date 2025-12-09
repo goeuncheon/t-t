@@ -13,7 +13,7 @@ export default function BottomNav({ currentPage }: BottomNavProps) {
         {/* 일정 */}
         <Link
           to="/schedule"
-          className={`flex flex-col items-center gap-1.5 px-4 py-1 ${
+          className={`flex flex-col items-center gap-1.5 px-6 py-2 ${
             currentPage === "schedule" ? "text-[#80B3FF]" : "text-slate-600"
           }`}
         >
