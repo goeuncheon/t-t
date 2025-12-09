@@ -71,7 +71,7 @@ export default function Schedule() {
 
           <div className="flex-1 flex flex-col items-center gap-0.5">
             <div className="text-xl font-bold text-[#21283F]">21</div>
-            <div className="text-xs text-[#21283F]">Thu</div>
+            <div className="text-xs text-slate-400">Thu</div>
             <div className="relative mt-1">
               <div className="w-4 h-4 bg-[#F66B6B] rounded-full flex items-center justify-center">
                 <span className="text-white text-xs font-normal">3</span>

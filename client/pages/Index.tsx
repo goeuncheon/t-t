@@ -29,11 +29,13 @@ export default function Index() {
       <div className="flex-1 flex flex-col items-center justify-center px-12 py-8">
         {/* Logo */}
         <div className="mb-16 flex justify-center flex-shrink-0">
-          <img 
-            src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800" 
-            alt="School Mate Logo" 
-            className="w-80 h-80"
-          />
+          <a href="https://schoolapp-e9fa3.web.app/" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800"
+              alt="School Mate Logo"
+              className="w-80 h-80"
+            />
+          </a>
         </div>
 
         {/* Navigation Cards Grid */}
