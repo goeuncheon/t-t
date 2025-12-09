@@ -95,26 +95,32 @@ export default function Timetable() {
             {timeSlots.map((slot, index) => (
               <div key={slot.label} className="flex flex-col gap-1">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
-                <div className="grid grid-cols-[56px_repeat(5,minmax(0,1fr))] gap-x-1.5 items-center">
-                  <div className="flex flex-col text-left text-[#010618] leading-tight">
+                <div className="flex gap-1 items-stretch">
+                  <div className="w-14 flex flex-col text-left text-[#010618] leading-tight">
                     <span className="text-sm font-semibold">{slot.label}</span>
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
-                  {days.map((day) => (
-                    <div key={`${day.date}-${slot.label}`} className="flex justify-center">
-                      {day.isToday && index < classes.length ? (
-                        <div
-                          className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[12px] px-2 py-2 flex flex-col items-center justify-center gap-1`}
-                        >
-                          <span className="text-xs font-bold text-black leading-none">{classes[index].name}</span>
-                          <span className="text-[9px] font-medium text-[#010618] leading-none">{classes[index].room}</span>
-                        </div>
-                      ) : (
-                        <div className="w-full max-w-[54px] h-[54px] rounded-[12px] bg-[#E6E6F0]" />
-                      )}
-                    </div>
-                  ))}
+                  <div className="grid flex-1 grid-cols-5 gap-3">
+                    {days.map((day) => (
+                      <div key={`${day.date}-${slot.label}`} className="flex justify-center py-1.5">
+                        {day.isToday && index < classes.length ? (
+                          <div
+                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[10px] px-2 py-2 flex flex-col items-start justify-start gap-1 text-left`}
+                          >
+                            <span className="text-[11px] font-semibold text-black leading-tight tracking-[-0.02em]">
+                              {classes[index].name}
+                            </span>
+                            <span className="text-[9px] font-medium text-[#010618] leading-tight tracking-[-0.01em]">
+                              {classes[index].room}
+                            </span>
+                          </div>
+                        ) : (
+                          <div className="w-full max-w-[54px] h-[54px] rounded-[10px] bg-[#E6E6F0]" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
