@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+const FIREBASE_APP_URL = "https://schoolapp-e9fa3.web.app/";
+
 export default function Index() {
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-hidden">
@@ -52,7 +54,7 @@ export default function Index() {
           {/* Logo */}
           <div className="relative z-0 mb-4">
             <a
-              href="https://schoolapp-e9fa3.web.app/"
+              href={FIREBASE_APP_URL}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -102,7 +104,7 @@ export default function Index() {
           {/* Login Button */}
           <button 
             className="relative z-20 mt-10"
-            onClick={() => window.open("https://schoolapp-e9fa3.web.app/", "_blank", "noopener,noreferrer")}
+            onClick={() => window.open(FIREBASE_APP_URL, "_blank", "noopener,noreferrer")}
           >
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800"
