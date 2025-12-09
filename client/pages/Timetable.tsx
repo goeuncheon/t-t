@@ -127,9 +127,9 @@ export default function Timetable() {
       {/* Timetable */}
       <div className="flex-1 px-4 pb-4">
         <div className="w-full max-w-[420px] mx-auto flex flex-col gap-4">
-          <div className="grid grid-cols-[64px_minmax(0,1fr)] gap-x-0.5 items-end">
+          <div className="grid grid-cols-[56px_minmax(0,1fr)] gap-x-0 items-end">
             <div />
-            <div className="grid grid-cols-5 gap-2">
+            <div className="grid grid-cols-5 gap-1.5">
               {days.map((day) => (
                 <div key={day.date} className="flex flex-col items-center gap-1">
                   <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
@@ -145,13 +145,13 @@ export default function Timetable() {
             {timeSlots.map((slot, index) => (
               <div key={slot.label} className="flex flex-col gap-1">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
-                <div className="grid grid-cols-[64px_minmax(0,1fr)] gap-x-0.5 items-center">
+                <div className="grid grid-cols-[56px_minmax(0,1fr)] gap-x-0 items-center">
                   <div className="flex flex-col text-left text-[#010618] leading-tight">
                     <span className="text-sm font-semibold">{slot.label}</span>
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
-                  <div className="grid grid-cols-5 gap-2">
+                  <div className="grid grid-cols-5 gap-1.5">
                     {days.map((day) => (
                       <div key={`${day.date}-${slot.label}`} className="flex justify-center py-1">
                         {day.isToday && index < classes.length ? (
