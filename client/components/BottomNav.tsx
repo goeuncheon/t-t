@@ -39,7 +39,7 @@ export default function BottomNav({ currentPage }: BottomNavProps) {
         {/* 리마인더 */}
         <Link
           to="/reminder"
-          className={`flex flex-col items-center gap-1.5 px-4 py-1 ${
+          className={`flex flex-col items-center gap-1.5 px-6 py-2 ${
             currentPage === "reminder" ? "text-[#80B3FF]" : "text-slate-600"
           }`}
         >
