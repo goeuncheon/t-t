@@ -137,7 +137,7 @@ export default function Reminder() {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-24 flex flex-col">
+    <div className="min-h-screen bg-white pb-36 flex flex-col">
       {/* Status Bar */}
       <div className="flex justify-between items-center px-4 py-3">
         <div className="text-xs font-normal">9:41</div>
@@ -165,7 +165,7 @@ export default function Reminder() {
       </div>
 
       {/* Content */}
-      <div className="flex-1 px-6 py-6 space-y-8">
+      <div className="flex-1 px-6 py-6 pb-10 space-y-8">
         {currentDay && (
           <div>
             <h2 className="text-xl font-bold mb-4 text-[#010618]">{currentDay.title}</h2>
@@ -227,7 +227,7 @@ export default function Reminder() {
       </div>
 
       {/* Date Navigation */}
-      <div className="flex justify-center items-center gap-8 px-6 pb-6">
+      <div className="flex justify-center items-center gap-8 px-6 pb-10">
         <button
           type="button"
           onClick={handlePrevious}
@@ -241,7 +241,7 @@ export default function Reminder() {
           type="button"
           onClick={handleNext}
           disabled={currentDateIndex === reminders.length - 1}
-          className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-10 h-10 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <span className="text-xl font-bold text-[#010618]">&gt;</span>
         </button>
@@ -251,7 +251,7 @@ export default function Reminder() {
       <button
         type="button"
         onClick={() => navigate("/reminder/add")}
-        className="fixed right-6 bottom-24 w-14 h-14 bg-[#80B3FF] rounded-full shadow-lg flex items-center justify-center"
+        className="fixed right-6 bottom-32 w-14 h-14 bg-[#80B3FF] rounded-full shadow-lg flex items-center justify-center"
       >
         <svg className="w-8 h-8 text-white" viewBox="0 0 20 20" fill="none">
           <path
