@@ -8,6 +8,18 @@ const scheduleDays = [
   { date: 22, day: "Fri" },
 ];
 
+const ReminderDot = ({ value }: { value?: string }) => {
+  if (!value) {
+    return <div className="h-5" />;
+  }
+
+  return (
+    <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
+      <span className="text-[#21283F] text-xs font-bold">{value}</span>
+    </div>
+  );
+};
+
 export default function Schedule() {
   return (
     <div className="min-h-screen bg-white pb-24">
@@ -58,23 +70,13 @@ export default function Schedule() {
                 <div className="h-24 w-full max-w-[76px] rounded-3xl bg-[#80B3FF] px-2 py-2 flex flex-col items-center justify-between">
                   <div className="text-2xl font-bold text-white leading-none">{day.date}</div>
                   <div className="text-xs font-bold text-white">{day.day}</div>
-                  {day.badge && (
-                    <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
-                      <span className="text-[#21283F] text-xs font-bold">{day.badge}</span>
-                    </div>
-                  )}
+                  <ReminderDot value={day.badge} />
                 </div>
               ) : (
                 <div className="h-24 w-full max-w-[72px] flex flex-col items-center justify-between py-2">
                   <div className="text-xl font-bold text-[#21283F] leading-none">{day.date}</div>
                   <div className="text-xs text-slate-400">{day.day}</div>
-                  {day.badge ? (
-                    <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
-                      <span className="text-[#21283F] text-xs font-bold">{day.badge}</span>
-                    </div>
-                  ) : (
-                    <div className="h-5" />
-                  )}
+                  <ReminderDot value={day.badge} />
                 </div>
               )}
             </div>
