@@ -127,56 +127,60 @@ export default function Timetable() {
       {/* Timetable */}
       <div className="flex-1 px-4 pb-4">
         <div className="w-full max-w-[420px] mx-auto flex flex-col gap-4">
-          <div className="grid grid-cols-[64px_repeat(5,minmax(0,1fr))] gap-4 items-end">
+          <div className="grid grid-cols-[64px_minmax(0,1fr)] gap-x-0.5 items-end">
             <div />
-            {days.map((day) => (
-              <div key={day.date} className="flex flex-col items-center gap-1">
-                <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
-                  {day.date}
+            <div className="grid grid-cols-5 gap-2">
+              {days.map((day) => (
+                <div key={day.date} className="flex flex-col items-center gap-1">
+                  <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
+                    {day.date}
+                  </div>
+                  <div className={`text-xs ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>{day.day}</div>
                 </div>
-                <div className={`text-xs ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>{day.day}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          <div className="flex-1 flex flex-col gap-2.5">
+          <div className="flex-1 flex flex-col gap-2">
             {timeSlots.map((slot, index) => (
-              <div key={slot.label} className="flex flex-col gap-1.5">
+              <div key={slot.label} className="flex flex-col gap-1">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
-                <div className="grid grid-cols-[64px_repeat(5,minmax(0,1fr))] gap-4 items-center">
+                <div className="grid grid-cols-[64px_minmax(0,1fr)] gap-x-0.5 items-center">
                   <div className="flex flex-col text-left text-[#010618] leading-tight">
                     <span className="text-sm font-semibold">{slot.label}</span>
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
-                  {days.map((day) => (
-                    <div key={`${day.date}-${slot.label}`} className="flex justify-center py-1.5">
-                      {day.isToday && index < classes.length ? (
-                        <div
-                          className={`${classes[index].color} w-full max-w-[60px] h-[60px] rounded-[12px] px-2 py-2 flex flex-col items-start justify-start gap-1 text-left overflow-hidden`}
-                        >
-                          <div className="w-full">
-                            <AutoFitText
-                              text={classes[index].name}
-                              max={10}
-                              min={7}
-                              className="font-semibold text-black leading-tight tracking-[-0.03em]"
-                            />
+                  <div className="grid grid-cols-5 gap-2">
+                    {days.map((day) => (
+                      <div key={`${day.date}-${slot.label}`} className="flex justify-center py-1">
+                        {day.isToday && index < classes.length ? (
+                          <div
+                            className={`${classes[index].color} w-full max-w-[56px] h-[56px] rounded-[10px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden`}
+                          >
+                            <div className="w-full">
+                              <AutoFitText
+                                text={classes[index].name}
+                                max={9}
+                                min={6}
+                                className="font-semibold text-black leading-tight tracking-[-0.03em]"
+                              />
+                            </div>
+                            <div className="w-full">
+                              <AutoFitText
+                                text={classes[index].room}
+                                max={6.5}
+                                min={4.5}
+                                className="text-[#010618] leading-tight tracking-[-0.02em]"
+                              />
+                            </div>
                           </div>
-                          <div className="w-full">
-                            <AutoFitText
-                              text={classes[index].room}
-                              max={7}
-                              min={5}
-                              className="text-[#010618] leading-tight tracking-[-0.02em]"
-                            />
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="w-full max-w-[60px] h-[60px] rounded-[12px] bg-[#E6E6F0]" />
-                      )}
-                    </div>
-                  ))}
+                        ) : (
+                          <div className="w-full max-w-[56px] h-[56px] rounded-[10px] bg-[#E6E6F0]" />
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
