@@ -20,8 +20,8 @@ const timeSlots = [
   { label: "01", period: "PM" },
   { label: "02", period: "PM" },
   { label: "03", period: "PM" },
-  { label: "04", period: "AM" },
-  { label: "05", period: "AM" },
+  { label: "04", period: "PM" },
+  { label: "05", period: "PM" },
 ];
 
 const days = [
@@ -74,56 +74,66 @@ export default function Timetable() {
         </div>
       </div>
 
-      {/* Timetable Card */}
+      {/* Timetable */}
       <div className="px-4 mt-6">
-        <div className="mx-auto w-full max-w-[420px] rounded-[40px] bg-white shadow-[0_18px_50px_rgba(10,12,61,0.08)] p-4">
-          {/* Day Header aligned with grid */}
-          <div className="grid grid-cols-[60px_repeat(5,1fr)] gap-2 items-end">
-            <div />
-            {days.map((day) => (
-              <div key={day.date} className="flex flex-col items-center gap-1">
-                <div className={`text-lg font-bold ${day.isToday ? "text-[#010618]" : "text-[#2E3147]"}`}>
+        <div className="w-full max-w-[390px] mx-auto flex flex-col">
+          {/* Date Section Header */}
+          <div className="flex items-start gap-[26px] mb-1">
+            {days.map((day, index) => (
+              <div key={day.date} className="flex-1 flex flex-col justify-center items-center gap-0.5">
+                <div className={`text-xl font-bold ${day.isToday ? "text-[#21283F]" : "text-[#21283F]"}`}>
                   {day.date}
                 </div>
-                <div className={`text-xs font-semibold ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>
+                <div className={`text-xs ${day.isToday ? "text-[#010618] font-normal" : "text-[#E9E9E9] font-bold"}`}>
                   {day.day}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Hour Rows */}
-          <div className="mt-4 flex flex-col gap-3">
+          {/* Timetable Grid */}
+          <div className="flex flex-col">
             {timeSlots.map((slot, index) => (
-              <div key={slot.label} className="grid grid-cols-[60px_repeat(5,1fr)] gap-2 items-stretch">
-                <div className="flex flex-col justify-center text-left text-[#010618] leading-tight pl-1">
-                  <span className="text-sm font-semibold">{slot.label}</span>
-                  <span className="text-[10px] font-semibold uppercase text-slate-400">{slot.period}</span>
-                </div>
+              <div key={slot.label}>
+                {/* Border Line */}
+                <div className="w-full h-[0.2px] bg-[#21283F] opacity-40" />
 
-                {days.map((day) => (
-                  <div
-                    key={`${day.date}-${slot.label}`}
-                    className="rounded-3xl border border-[#ECECF5] bg-[#F7F7FC] p-1 flex items-stretch"
-                  >
-                    {day.isToday ? (
-                      <div
-                        className={`${classes[index].color} w-full rounded-2xl px-3 py-2 flex flex-col justify-between items-start`}
-                      >
-                        <span className="text-xs font-semibold text-[#010618] leading-tight">
-                          {classes[index].name}
-                        </span>
-                        <span className="text-[10px] font-semibold text-[#010618] leading-tight opacity-80">
-                          {classes[index].room}
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="w-full rounded-2xl bg-[#E6E6F0]" />
-                    )}
-                  </div>
-                ))}
+                {/* Time Row */}
+                <div className="flex items-start gap-[26px] h-[60px]">
+                  {days.map((day, dayIndex) => (
+                    <div key={`${day.date}-${slot.label}`} className="flex-1 flex flex-col justify-center items-center relative h-full">
+                      {/* Time Label (only on first day) */}
+                      {dayIndex === 0 && (
+                        <div className="absolute left-0 top-0 flex flex-col justify-center items-center gap-0.5">
+                          <div className="text-xs font-bold text-[#010618]">{slot.label}</div>
+                          <div className="text-[8px] font-normal text-[#010618]">{slot.period}</div>
+                        </div>
+                      )}
+
+                      {/* Class Block (only for Monday with actual classes) */}
+                      {day.isToday && index < classes.length && (
+                        <div className={`w-[53px] h-[55px] rounded-lg ${classes[index].color} p-3 flex flex-col justify-center items-center gap-1`}>
+                          <div className="text-xs font-bold text-black leading-none">
+                            {classes[index].name}
+                          </div>
+                          <div className="text-[8px] font-normal text-[#010618] leading-none">
+                            {classes[index].room}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Placeholder for other days */}
+                      {!day.isToday && (
+                        <div className="w-[53px] h-[55px] rounded-lg bg-[#E9E9E9]" />
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
             ))}
+
+            {/* Final Border Line */}
+            <div className="w-full h-[0.2px] bg-[#21283F] opacity-40" />
           </div>
         </div>
       </div>
