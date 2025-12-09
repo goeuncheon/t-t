@@ -156,22 +156,22 @@ export default function Timetable() {
                       <div key={`${day.date}-${slot.label}`} className="flex justify-center py-1.5">
                         {day.isToday && index < classes.length ? (
                           <div
-                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[10px] px-2 py-2 flex flex-col items-start justify-between gap-1 text-left overflow-hidden`}
+                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[10px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden`}
                           >
                             <div className="w-full">
                               <AutoFitText
                                 text={classes[index].name}
-                                max={11}
-                                min={8}
-                                className="font-semibold text-black leading-tight tracking-[-0.02em]"
+                                max={10}
+                                min={7}
+                                className="font-semibold text-black leading-tight tracking-[-0.03em]"
                               />
                             </div>
                             <div className="w-full">
                               <AutoFitText
                                 text={classes[index].room}
-                                max={8}
-                                min={6}
-                                className="text-[#010618] leading-tight tracking-[-0.01em]"
+                                max={7}
+                                min={5}
+                                className="text-[#010618] leading-tight tracking-[-0.02em]"
                               />
                             </div>
                           </div>
