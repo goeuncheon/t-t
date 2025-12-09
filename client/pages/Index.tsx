@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
 
+const FIREBASE_APP_URL = import.meta.env.VITE_FIREBASE_APP_URL;
+
+if (!FIREBASE_APP_URL) {
+  throw new Error("VITE_FIREBASE_APP_URL environment variable is not configured");
+}
+
 export default function Index() {
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-hidden">
@@ -51,11 +57,7 @@ export default function Index() {
         <div className="relative w-full max-w-4xl flex flex-col items-center pt-10">
           {/* Logo */}
           <div className="relative z-0 mb-4">
-            <a
-              href="https://schoolapp-e9fa3.web.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={FIREBASE_APP_URL} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800"
                 alt="School Mate Logo"
@@ -100,7 +102,24 @@ export default function Index() {
           </div>
 
           {/* Login Button */}
-          <button className="relative z-20 mt-10">
+          <button
+            className="relative z-20 mt-10"
+            onClick={() => {
+              try {
+                const newWindow = window.open(
+                  FIREBASE_APP_URL,
+                  "_blank",
+                  "popup=1,width=800,height=600,noopener,noreferrer",
+                );
+                if (!newWindow) {
+                  window.location.href = FIREBASE_APP_URL;
+                }
+              } catch (error) {
+                console.error("Failed to open Firebase app", error);
+                window.location.href = FIREBASE_APP_URL;
+              }
+            }}
+          >
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800"
               alt="LOGIN"
