@@ -1,4 +1,5 @@
 import BottomNav from "@/components/BottomNav";
+import BottomNav from "@/components/BottomNav";
 import { useEffect, useRef } from "react";
 
 const classes = [
