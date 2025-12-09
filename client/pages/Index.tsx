@@ -57,11 +57,7 @@ export default function Index() {
         <div className="relative w-full max-w-4xl flex flex-col items-center pt-10">
           {/* Logo */}
           <div className="relative z-0 mb-4">
-            <a
-              href="https://schoolapp-e9fa3.web.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={FIREBASE_APP_URL} target="_blank" rel="noopener noreferrer">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800"
                 alt="School Mate Logo"
@@ -118,7 +114,8 @@ export default function Index() {
                 if (!newWindow) {
                   window.location.href = FIREBASE_APP_URL;
                 }
-              } catch (_error) {
+              } catch (error) {
+                console.error("Failed to open Firebase app", error);
                 window.location.href = FIREBASE_APP_URL;
               }
             }}
