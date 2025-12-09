@@ -25,12 +25,28 @@ const timeSlots = [
 ];
 
 const days = [
-  { date: 18, day: "Mon", isToday: true },
-  { date: 19, day: "Tue", isToday: false },
-  { date: 20, day: "Wed", isToday: false },
-  { date: 21, day: "Thu", isToday: false },
-  { date: 22, day: "Fri", isToday: false },
+  { date: 18, day: "Mon", isToday: true, reminders: 2 },
+  { date: 19, day: "Tue", isToday: false, reminders: 1 },
+  { date: 20, day: "Wed", isToday: false, reminders: 0 },
+  { date: 21, day: "Thu", isToday: false, reminders: 3 },
+  { date: 22, day: "Fri", isToday: false, reminders: 0 },
 ];
+
+function ReminderBadge({ count = 0, highlight = false }: { count?: number; highlight?: boolean }) {
+  if (!count) {
+    return <div className="h-6" />;
+  }
+
+  return (
+    <div
+      className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-semibold ${
+        highlight ? "bg-white text-[#21283F]" : "bg-white text-[#21283F] border border-[#E9E9E9]"
+      }`}
+    >
+      {count}
+    </div>
+  );
+}
 
 export default function Timetable() {
   return (
@@ -78,15 +94,26 @@ export default function Timetable() {
       <div className="flex-1 px-4 pb-4 min-h-0">
         <div className="h-full w-full max-w-[420px] mx-auto rounded-[40px] bg-white shadow-[0_18px_50px_rgba(10,12,61,0.08)] p-4 flex flex-col gap-4">
           {/* Date Section */}
-          <div className="grid grid-cols-[64px_repeat(5,minmax(0,1fr))] gap-2 items-end">
+          <div className="grid grid-cols-[64px_repeat(5,minmax(0,1fr))] gap-2 items-start">
             <div />
             {days.map((day) => (
-              <div key={day.date} className="flex flex-col items-center gap-1">
-                <div className="text-xl font-bold text-[#21283F]">{day.date}</div>
+              <div key={day.date} className="flex flex-col items-center gap-2">
                 <div
-                  className={`text-xs ${day.isToday ? "text-[#010618] font-normal" : "text-[#E9E9E9] font-semibold"}`}
+                  className={`flex flex-col items-center gap-1 w-full ${
+                    day.isToday
+                      ? "rounded-full bg-[#80B3FF] px-3 py-4 text-white"
+                      : "px-2"
+                  }`}
                 >
-                  {day.day}
+                  <span className={`text-xl font-bold ${day.isToday ? "text-white" : "text-[#21283F]"}`}>
+                    {day.date}
+                  </span>
+                  <span
+                    className={`text-xs font-semibold ${day.isToday ? "text-white" : "text-[#E9E9E9]"}`}
+                  >
+                    {day.day}
+                  </span>
+                  <ReminderBadge count={day.reminders} highlight={day.isToday} />
                 </div>
               </div>
             ))}
