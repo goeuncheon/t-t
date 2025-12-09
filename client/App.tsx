@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Schedule from "./pages/Schedule";
 import Timetable from "./pages/Timetable";
 import Reminder from "./pages/Reminder";
+import ReminderForm from "./pages/ReminderForm";
 import Board from "./pages/Board";
 import BoardWrite from "./pages/BoardWrite";
 import NotFound from "./pages/NotFound";
@@ -27,6 +28,8 @@ const App = () => (
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/timetable" element={<Timetable />} />
           <Route path="/reminder" element={<Reminder />} />
+          <Route path="/reminder/add" element={<ReminderForm />} />
+          <Route path="/reminder/edit/:id" element={<ReminderForm />} />
           <Route path="/board" element={<Board />} />
           <Route path="/board/write" element={<BoardWrite />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
