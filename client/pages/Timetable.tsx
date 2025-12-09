@@ -151,8 +151,8 @@ export default function Timetable() {
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
                 <div className="grid grid-cols-[34px_minmax(0,1fr)] gap-0 items-center">
                   <div className="flex flex-col items-start justify-start text-left text-[#010618] leading-tight">
-                    <span className="text-sm font-semibold">{slot.label}</span>
-                    <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
+                    <span className="text-[11px] font-semibold">{slot.label}</span>
+                    <span className="text-[8px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
                   <div className="grid grid-cols-5 gap-4 -ml-4">
