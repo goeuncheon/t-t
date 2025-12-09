@@ -78,7 +78,7 @@ export default function Schedule() {
         </div>
 
         {/* Date Row */}
-        <div className="grid grid-cols-5 gap-3 items-end mb-6">
+        <div className="grid grid-cols-5 gap-3 items-end mt-4">
           {scheduleDays.map((day) => (
             <div key={day.date} className="flex justify-center">
               {day.type === "today" ? (
