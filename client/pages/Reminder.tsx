@@ -232,11 +232,11 @@ export default function Reminder() {
           type="button"
           onClick={handlePrevious}
           disabled={currentDateIndex === 0}
-          className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
+          className="w-10 h-10 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <span className="text-xl font-bold text-[#010618]">&lt;</span>
         </button>
-        <span className="text-sm font-medium text-[#010618]">{currentDay?.date}</span>
+        <span className="text-xl font-bold text-[#010618]">{currentDay?.date}</span>
         <button
           type="button"
           onClick={handleNext}
@@ -251,9 +251,9 @@ export default function Reminder() {
       <button
         type="button"
         onClick={() => navigate("/reminder/add")}
-        className="fixed right-6 bottom-32 w-14 h-14 bg-[#80B3FF] rounded-full shadow-lg flex items-center justify-center"
+        className="fixed right-6 bottom-48 w-16 h-16 bg-[#80B3FF] rounded-full shadow-xl flex items-center justify-center"
       >
-        <svg className="w-8 h-8 text-white" viewBox="0 0 20 20" fill="none">
+        <svg className="w-9 h-9 text-white" viewBox="0 0 20 20" fill="none">
           <path
             d="M10 4.69403V9.59442H14.9046V10.0026H10V14.903H9.596V10.0026H4.696V9.59442H9.596V4.69403H10Z"
             fill="white"
