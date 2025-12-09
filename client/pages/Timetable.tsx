@@ -160,7 +160,7 @@ export default function Timetable() {
                       <div key={`${day.date}-${slot.label}`} className="flex justify-center items-center pt-1 pb-0.5">
                         {day.isToday && index < classes.length ? (
                           <div
-                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[9px] px-1.5 py-1.5 flex flex.col items-start justify-start gap-0.5 text-left overflow-hidden mt-0.5`}
+                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[9px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden mt-0.5`}
                           >
                             <div className="w-full">
                               <AutoFitText
