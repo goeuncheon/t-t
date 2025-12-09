@@ -64,10 +64,10 @@ export default function BottomNav({ currentPage }: BottomNavProps) {
       </div>
 
       {/* Home Indicator */}
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-4 pb-1">
         <button
           onClick={() => navigate("/")}
-          className="w-32 h-1 bg-slate-900 rounded-full"
+          className="w-40 h-1.5 bg-slate-900 rounded-full"
         />
       </div>
     </div>
