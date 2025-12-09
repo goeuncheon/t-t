@@ -8,8 +8,8 @@ export default function BottomNav({ currentPage }: BottomNavProps) {
   const navigate = useNavigate();
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 pb-2">
-      <div className="flex items-center justify-around py-2">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 pb-6">
+      <div className="flex items-center justify-around py-3 gap-4">
         {/* 일정 */}
         <Link
           to="/schedule"
