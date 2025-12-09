@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 
+const FIREBASE_APP_URL = "https://schoolapp-e9fa3.web.app/";
+
 export default function Index() {
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-hidden">
@@ -103,7 +105,7 @@ export default function Index() {
           <button
             className="relative z-20 mt-10"
             onClick={() =>
-              (window.location.href = "https://schoolapp-e9fa3.web.app/")
+              window.open(FIREBASE_APP_URL, "_blank", "noopener,noreferrer")
             }
           >
             <img
