@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-const FIREBASE_APP_URL = "https://schoolapp-e9fa3.web.app/";
+const FIREBASE_APP_URL =
+  import.meta.env.VITE_FIREBASE_APP_URL ?? "https://schoolapp-e9fa3.web.app/";
 
 export default function Index() {
   return (
@@ -104,9 +105,20 @@ export default function Index() {
           {/* Login Button */}
           <button
             className="relative z-20 mt-10"
-            onClick={() =>
-              window.open(FIREBASE_APP_URL, "_blank", "noopener,noreferrer")
-            }
+            onClick={() => {
+              try {
+                const newWindow = window.open(
+                  FIREBASE_APP_URL,
+                  "_blank",
+                  "noopener,noreferrer",
+                );
+                if (!newWindow) {
+                  window.location.href = FIREBASE_APP_URL;
+                }
+              } catch {
+                window.location.href = FIREBASE_APP_URL;
+              }
+            }}
           >
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800"
