@@ -4,9 +4,9 @@ export default function Index() {
   return (
     <div className="min-h-screen flex flex-col bg-white overflow-hidden">
       {/* Status Bar */}
-      <div className="flex justify-between items-center px-8 py-4 bg-[#EBEBF5] flex-shrink-0">
-        <div className="text-sm font-normal">9:41</div>
-        <div className="flex items-center gap-3">
+      <div className="flex justify-between items-center px-8 py-5 bg-white border-b border-[#EBEBF5]">
+        <div className="text-sm font-semibold text-[#010618]">9:41</div>
+        <div className="flex items-center gap-3 text-[#010618]">
           <svg className="w-5 h-5" viewBox="0 0 17 11" fill="none">
             <path d="M2 6.667C2.552 6.667 3 7.115 3 7.667V9.667C3 10.219 2.552 10.667 2 10.667H1C0.448 10.667 0 10.219 0 9.667V7.667C0 7.115 0.448 6.667 1 6.667H2Z" fill="#010618" />
             <path d="M6.667 4.667C7.219 4.667 7.667 5.115 7.667 5.667V9.667C7.667 10.219 7.219 10.667 6.667 10.667H5.667C5.115 10.667 4.667 10.219 4.667 9.667V5.667C4.667 5.115 5.115 4.667 5.667 4.667H6.667Z" fill="#010618" />
@@ -26,26 +26,26 @@ export default function Index() {
       </div>
 
       {/* Main Content Container */}
-      <div className="flex-1 flex justify-center px-6 sm:px-10 pb-10">
-        <div className="relative w-full max-w-3xl flex flex-col items-center pt-6">
+      <div className="flex-1 flex justify-center px-4 sm:px-8 pb-10">
+        <div className="relative w-full max-w-4xl flex flex-col items-center pt-10">
           {/* Logo */}
-          <div className="relative z-20 mb-4">
+          <div className="relative z-0 mb-4">
             <a href="https://schoolapp-e9fa3.web.app/" target="_blank" rel="noopener noreferrer">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800"
                 alt="School Mate Logo"
-                className="w-[520px] max-w-[95vw] h-auto"
+                className="w-[420px] max-w-[85vw] h-auto opacity-95"
               />
             </a>
           </div>
 
           {/* Navigation Cards Grid */}
-          <div className="relative z-10 w-full grid grid-cols-2 gap-6 sm:gap-8 -mt-12 sm:-mt-16">
+          <div className="relative z-20 w-full grid grid-cols-2 gap-8 sm:gap-12 -mt-14">
             <Link to="/schedule" className="block">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fe5b1b32ad6c74a479a7bf5f02f606293?format=webp&width=800"
                 alt="일정"
-                className="w-full rounded-3xl border-[6px] border-white"
+                className="w-full rounded-[40px] border-[8px] border-white shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
               />
             </Link>
 
@@ -53,7 +53,7 @@ export default function Index() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F1e94785afedf4f0886ae0ecbfcdbd64c?format=webp&width=800"
                 alt="시간표"
-                className="w-full rounded-3xl border-[6px] border-white"
+                className="w-full rounded-[40px] border-[8px] border-white shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
               />
             </Link>
 
@@ -61,7 +61,7 @@ export default function Index() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ffd21b7a522404c22baadca1259a59266?format=webp&width=800"
                 alt="리마인더"
-                className="w-full rounded-3xl border-[6px] border-white"
+                className="w-full rounded-[40px] border-[8px] border-white shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
               />
             </Link>
 
@@ -69,17 +69,17 @@ export default function Index() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F6a91e79c89444c628bc46138f251a42f?format=webp&width=800"
                 alt="게시판"
-                className="w-full rounded-3xl border-[6px] border-white"
+                className="w-full rounded-[40px] border-[8px] border-white shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
               />
             </Link>
           </div>
 
           {/* Login Button */}
-          <button className="relative z-10 mt-6">
+          <button className="relative z-20 mt-10">
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800"
               alt="LOGIN"
-              className="h-32 w-auto"
+              className="h-24 w-auto"
             />
           </button>
         </div>
