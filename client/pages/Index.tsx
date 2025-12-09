@@ -5,7 +5,7 @@ export default function Index() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       {/* Status Bar */}
-      <div className="flex justify-between items-center px-4 py-3">
+      <div className="flex justify-between items-center px-6 py-3">
         <div className="text-xs font-normal">9:41</div>
         <div className="flex items-center gap-2">
           <svg className="w-4 h-4" viewBox="0 0 17 11" fill="none">
@@ -27,105 +27,117 @@ export default function Index() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 pb-32">
+      <div className="flex-1 flex flex-col items-center justify-center px-6 pb-24">
         {/* Logo Section */}
-        <div className="flex flex-col items-center mb-16">
+        <div className="flex flex-col items-center mb-8">
           <img 
             src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ff0eeec29ef7f412cb99b3b5c48754d71?format=webp&width=800" 
             alt="School Mate Logo" 
-            className="w-32 h-32 mb-4"
+            className="w-24 h-24 mb-3"
           />
           <div className="text-center">
-            <div className="flex items-center gap-1 text-4xl font-bold mb-2">
+            <div className="flex items-center justify-center gap-0.5 text-3xl font-bold mb-2">
               <span className="text-[#FF7D7F]">SC</span>
               <span className="text-[#FFC374]">HO</span>
               <span className="text-[#7CED91]">OL</span>
-              <span className="text-[#536EFF] ml-2">MA</span>
+              <span className="text-[#536EFF]">MA</span>
               <span className="text-[#536EFF]">TE</span>
             </div>
-            <p className="text-sm text-slate-600">
+            <p className="text-xs text-slate-600">
               ✨ 쉽게 학교 3D백 바라보기 (즐겁)
             </p>
           </div>
         </div>
 
         {/* Navigation Blocks */}
-        <div className="w-full max-w-sm grid grid-cols-2 gap-6">
+        <div className="w-full max-w-xs grid grid-cols-2 gap-4">
           {/* 일정 Block */}
-          <Link to="/schedule" className="relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-              {[...Array(4)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="w-2.5 h-4 rounded-lg border-r border-b border-slate-300 shadow-sm bg-white"
-                />
-              ))}
+          <Link to="/schedule" className="flex flex-col items-center">
+            <div className="w-full rounded-lg border-4 border-white shadow-lg overflow-hidden relative mb-2 h-28">
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fe5b1b32ad6c74a479a7bf5f02f606293?format=webp&width=800" 
+                alt="일정" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                {[...Array(4)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="w-2 h-3 rounded border-r border-b border-slate-300 shadow-sm bg-white"
+                  />
+                ))}
+              </div>
             </div>
-            <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fe5b1b32ad6c74a479a7bf5f02f606293?format=webp&width=800" 
-              alt="일정" 
-              className="w-full rounded-xl border-4 border-white shadow-[0_8px_12px_6px_rgba(0,0,0,0.15),0_4px_4px_0_rgba(0,0,0,0.30)] mt-2"
-            />
+            <p className="text-sm font-medium text-[#010618]">일정</p>
           </Link>
 
           {/* 시간표 Block */}
-          <Link to="/timetable" className="relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-              {[...Array(4)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="w-2.5 h-4 rounded-lg border-r border-b border-slate-300 shadow-sm bg-white"
-                />
-              ))}
+          <Link to="/timetable" className="flex flex-col items-center">
+            <div className="w-full rounded-lg border-4 border-white shadow-lg overflow-hidden relative mb-2 h-28">
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F1e94785afedf4f0886ae0ecbfcdbd64c?format=webp&width=800" 
+                alt="시간표" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                {[...Array(4)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="w-2 h-3 rounded border-r border-b border-slate-300 shadow-sm bg-white"
+                  />
+                ))}
+              </div>
             </div>
-            <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F1e94785afedf4f0886ae0ecbfcdbd64c?format=webp&width=800" 
-              alt="시간표" 
-              className="w-full rounded-xl border-4 border-white shadow-[0_6px_10px_4px_rgba(0,0,0,0.15),0_2px_3px_0_rgba(0,0,0,0.30)] mt-2"
-            />
+            <p className="text-sm font-medium text-[#010618]">시간표</p>
           </Link>
 
           {/* 리마인더 Block */}
-          <Link to="/reminder" className="relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-              {[...Array(4)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="w-2.5 h-4 rounded-lg border-r border-b border-slate-300 shadow-sm bg-white"
-                />
-              ))}
+          <Link to="/reminder" className="flex flex-col items-center">
+            <div className="w-full rounded-lg border-4 border-white shadow-lg overflow-hidden relative mb-2 h-28">
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ffd21b7a522404c22baadca1259a59266?format=webp&width=800" 
+                alt="리마인더" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                {[...Array(4)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="w-2 h-3 rounded border-r border-b border-slate-300 shadow-sm bg-white"
+                  />
+                ))}
+              </div>
             </div>
-            <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Ffd21b7a522404c22baadca1259a59266?format=webp&width=800" 
-              alt="리마인더" 
-              className="w-full rounded-xl border-4 border-white shadow-[0_8px_12px_6px_rgba(0,0,0,0.15),0_4px_4px_0_rgba(0,0,0,0.30)] mt-2"
-            />
+            <p className="text-sm font-medium text-[#010618]">리마인더</p>
           </Link>
 
           {/* 게시판 Block */}
-          <Link to="/board" className="relative">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-              {[...Array(4)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="w-2.5 h-4 rounded-lg border-r border-b border-slate-300 shadow-sm bg-white"
-                />
-              ))}
+          <Link to="/board" className="flex flex-col items-center">
+            <div className="w-full rounded-lg border-4 border-white shadow-lg overflow-hidden relative mb-2 h-28">
+              <img 
+                src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F6a91e79c89444c628bc46138f251a42f?format=webp&width=800" 
+                alt="게시판" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+                {[...Array(4)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="w-2 h-3 rounded border-r border-b border-slate-300 shadow-sm bg-white"
+                  />
+                ))}
+              </div>
             </div>
-            <img 
-              src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2F6a91e79c89444c628bc46138f251a42f?format=webp&width=800" 
-              alt="게시판" 
-              className="w-full rounded-xl border-4 border-white shadow-[0_6px_10px_4px_rgba(0,0,0,0.15),0_2px_3px_0_rgba(0,0,0,0.30)] mt-2"
-            />
+            <p className="text-sm font-medium text-[#010618]">게시판</p>
           </Link>
         </div>
 
         {/* Login Button */}
-        <button className="mt-10 relative shadow-[0_6px_10px_4px_rgba(0,0,0,0.15),0_2px_3px_0_rgba(0,0,0,0.30)]">
+        <button className="mt-8 shadow-lg">
           <img 
             src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800" 
             alt="LOGIN" 
-            className="w-48 h-auto"
+            className="h-14 w-auto"
           />
         </button>
       </div>
