@@ -1,4 +1,4 @@
-import BottomNav from "../components/BottomNav";
+import BottomNav from "@/components/BottomNav";
 
 const classes = [
   { name: "수업 1", room: "1학년 1반", color: "bg-[#FF7D7F]" },
@@ -93,54 +93,56 @@ export default function Timetable() {
 
       {/* Timetable Grid */}
       <div className="px-3 mt-4">
-        <div className="w-full">
-          <div className="grid grid-cols-[58px_repeat(5,1fr)] gap-2">
-            {/* Time Column */}
-            <div className="grid gap-1.5 pt-8 text-[#010618]" style={{ gridTemplateRows: rowTemplate }}>
-              {timeSlots.map((slot) => (
-                <div key={slot.label} className="flex flex-col items-center justify-center h-full leading-tight">
-                  <span className="text-[11px] font-semibold sm:text-sm">{slot.label}</span>
-                  <span className="text-[8px] font-semibold uppercase text-slate-400">
-                    {slot.period}
-                  </span>
+        <div className="mx-auto w-full max-w-[380px]">
+          <div className="rounded-[32px] bg-[#F5F5FA] p-3">
+            <div className="grid grid-cols-[56px_repeat(5,1fr)] gap-2">
+              {/* Time Column */}
+              <div className="grid gap-1.5 pt-6 text-[#010618] pr-1" style={{ gridTemplateRows: rowTemplate }}>
+                {timeSlots.map((slot) => (
+                  <div key={slot.label} className="flex flex-col items-start justify-center h-full leading-tight">
+                    <span className="text-[10px] font-semibold sm:text-sm">{slot.label}</span>
+                    <span className="text-[7px] font-semibold uppercase text-slate-400">
+                      {slot.period}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Day Columns */}
+              {days.map((day) => (
+                <div key={day.date} className="relative min-w-0">
+                  {day.isToday && (
+                    <div className="absolute inset-[-2px] sm:inset-[-4px] rounded-2xl bg-white"></div>
+                  )}
+
+                  <div className="relative grid gap-1.5" style={{ gridTemplateRows: rowTemplate }}>
+                    {(day.isToday ? classes : timeSlots).map((entry, index) => {
+                      if (day.isToday) {
+                        const cls = entry as (typeof classes)[number];
+                        return (
+                          <div
+                            key={cls.name}
+                            className={`${cls.color} w-full h-full rounded-2xl p-2 flex flex-col items-start justify-between`}
+                          >
+                            <span className="text-[10px] font-semibold text-[#010618] leading-tight">{cls.name}</span>
+                            <span className="text-[8px] font-semibold text-[#010618] leading-tight opacity-80">
+                              {cls.room}
+                            </span>
+                          </div>
+                        );
+                      }
+
+                      return (
+                        <div
+                          key={`${day.date}-${index}`}
+                          className="w-full h-full rounded-2xl bg-[#E9E9EE]"
+                        ></div>
+                      );
+                    })}
+                  </div>
                 </div>
               ))}
             </div>
-
-            {/* Day Columns */}
-            {days.map((day) => (
-              <div key={day.date} className="relative min-w-0">
-                {day.isToday && (
-                  <div className="absolute inset-[-4px] sm:inset-[-6px] rounded-2xl bg-[#F4F4F8]"></div>
-                )}
-
-                <div className="relative grid gap-1.5" style={{ gridTemplateRows: rowTemplate }}>
-                  {(day.isToday ? classes : timeSlots).map((entry, index) => {
-                    if (day.isToday) {
-                      const cls = entry as (typeof classes)[number];
-                      return (
-                        <div
-                          key={cls.name}
-                          className={`${cls.color} w-full h-full rounded-2xl p-2.5 flex flex-col items-start justify-between`}
-                        >
-                          <span className="text-[11px] font-semibold text-[#010618] leading-tight">{cls.name}</span>
-                          <span className="text-[9px] font-semibold text-[#010618] leading-tight opacity-80">
-                            {cls.room}
-                          </span>
-                        </div>
-                      );
-                    }
-
-                    return (
-                      <div
-                        key={`${day.date}-${index}`}
-                        className="w-full h-full rounded-2xl bg-[#E9E9EE]"
-                      ></div>
-                    );
-                  })}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
