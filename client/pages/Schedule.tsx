@@ -108,7 +108,7 @@ export default function Schedule() {
       </div>
 
       {/* Schedule Cards */}
-      <div className="px-6 space-y-4">
+      <div className="px-6 space-y-4 mt-8">
         {/* Card 1 */}
         <div className="flex p-4 gap-2 rounded-lg bg-[rgba(235,235,245,0.6)]">
           <div className="flex flex-col items-end gap-2.5 w-20">
