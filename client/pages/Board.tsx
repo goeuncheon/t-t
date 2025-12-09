@@ -5,7 +5,7 @@ export default function Board() {
   const [selectedTab, setSelectedTab] = useState("공지사항");
 
   return (
-    <div className="min-h-screen bg-white pb-24">
+    <div className="min-h-screen bg-white pb-24 flex flex-col">
       {/* Status Bar */}
       <div className="flex justify-between items-center px-4 py-3">
         <div className="text-xs font-normal">9:41</div>
@@ -40,13 +40,13 @@ export default function Board() {
             onClick={() => setSelectedTab("공지사항")}
             className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
               selectedTab === "공지사항" 
-                ? "bg-white shadow-sm" 
+                ? "bg-[#80B3FF] shadow-sm" 
                 : "bg-transparent"
             }`}
           >
             <span className={`text-sm ${
-              selectedTab === "공지사항" ? "font-semibold" : "font-normal"
-            } text-[#010618]`}>
+              selectedTab === "공지사항" ? "font-semibold text-white" : "font-normal text-[#010618]"
+            }`}>
               공지사항
             </span>
           </button>
@@ -57,13 +57,13 @@ export default function Board() {
             onClick={() => setSelectedTab("행사")}
             className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
               selectedTab === "행사" 
-                ? "bg-white shadow-sm" 
+                ? "bg-[#80B3FF] shadow-sm" 
                 : "bg-transparent"
             }`}
           >
             <span className={`text-sm ${
-              selectedTab === "행사" ? "font-semibold" : "font-normal"
-            } text-[#010618]`}>
+              selectedTab === "행사" ? "font-semibold text-white" : "font-normal text-[#010618]"
+            }`}>
               행사
             </span>
           </button>
@@ -74,13 +74,13 @@ export default function Board() {
             onClick={() => setSelectedTab("자료실")}
             className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
               selectedTab === "자료실" 
-                ? "bg-white shadow-sm" 
+                ? "bg-[#80B3FF] shadow-sm" 
                 : "bg-transparent"
             }`}
           >
             <span className={`text-sm ${
-              selectedTab === "자료실" ? "font-semibold" : "font-normal"
-            } text-[#010618]`}>
+              selectedTab === "자료실" ? "font-semibold text-white" : "font-normal text-[#010618]"
+            }`}>
               자료실
             </span>
           </button>
@@ -112,8 +112,8 @@ export default function Board() {
       {/* Divider */}
       <div className="border-t border-slate-200 mb-4"></div>
 
-      {/* Posts List */}
-      <div className="px-6 space-y-4">
+      {/* Posts List - Flex grow to push pagination to bottom */}
+      <div className="flex-1 px-6 space-y-4">
         {[
           { id: 1, title: "도서관 교육 일정 안내", author: "홍길동", date: "01.01" },
           { id: 2, title: "공지사항 예시", author: "OOO", date: "00.00" },
@@ -122,6 +122,14 @@ export default function Board() {
           { id: 5, title: "공지사항 예시", author: "OOO", date: "00.00" },
           { id: 6, title: "공지사항 예시", author: "OOO", date: "00.00" },
           { id: 7, title: "공지사항 예시", author: "OOO", date: "00.00" },
+          { id: 8, title: "공지사항 예시", author: "OOO", date: "00.00" },
+          { id: 9, title: "공지사항 예시", author: "OOO", date: "00.00" },
+          { id: 10, title: "공지사항 예시", author: "OOO", date: "00.00" },
+          { id: 11, title: "공지사항 예시", author: "OOO", date: "00.00" },
+          { id: 12, title: "공지사항 예시", author: "OOO", date: "00.00" },
+          { id: 13, title: "공지사항 예시", author: "OOO", date: "00.00" },
+          { id: 14, title: "공지사항 예시", author: "OOO", date: "00.00" },
+          { id: 15, title: "공지사항 예시", author: "OOO", date: "00.00" },
         ].map((post) => (
           <div key={post.id} className="flex items-center gap-3 py-2">
             <div className="text-sm text-slate-600 w-6">{post.id}</div>
@@ -136,8 +144,8 @@ export default function Board() {
         ))}
       </div>
 
-      {/* Pagination */}
-      <div className="flex justify-center items-center gap-2 py-6">
+      {/* Pagination - Now at bottom */}
+      <div className="flex justify-center items-center gap-2 py-4 mt-4">
         <button className="w-8 h-8 flex items-center justify-center">
           <svg className="w-6 h-6 text-[#80B3FF]" viewBox="0 0 19 22" fill="currentColor">
             <path d="M1.38426 13.4779C-0.461419 12.2981 -0.461416 9.60219 1.38426 8.42241L13.8141 0.477165C15.811 -0.799273 18.4298 0.634884 18.4298 3.00489V18.8954C18.4298 21.2654 15.811 22.6995 13.8141 21.4231L1.38426 13.4779Z"/>
