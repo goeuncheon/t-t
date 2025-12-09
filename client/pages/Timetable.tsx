@@ -55,71 +55,88 @@ export default function Timetable() {
             </svg>
           </button>
         </div>
-
-        {/* Date Row */}
-        <div className="flex items-start justify-between gap-4 mb-8">
-          <div className="flex-1 flex flex-col items-center gap-0.5">
-            <div className="text-xl font-bold text-[#21283F]">18</div>
-            <div className="text-xs font-semibold text-[#21283F]">Mon</div>
-          </div>
-
-          <div className="flex-1 flex flex-col items-center gap-0.5">
-            <div className="text-xl font-bold text-[#21283F]">19</div>
-            <div className="text-xs font-normal text-slate-400">Tue</div>
-          </div>
-
-          <div className="flex-1 flex flex-col items-center gap-0.5">
-            <div className="text-xl font-bold text-[#21283F]">20</div>
-            <div className="text-xs font-normal text-slate-400">Wed</div>
-          </div>
-
-          <div className="flex-1 flex flex-col items-center gap-0.5">
-            <div className="text-xl font-bold text-[#21283F]">21</div>
-            <div className="text-xs font-normal text-slate-400">Thu</div>
-          </div>
-
-          <div className="flex-1 flex flex-col items-center gap-0.5">
-            <div className="text-xl font-bold text-[#21283F]">22</div>
-            <div className="text-xs font-normal text-slate-400">Fri</div>
-          </div>
-        </div>
       </div>
 
       {/* Timetable Grid */}
-      <div className="px-6">
-        <div className="flex gap-2">
+      <div className="px-4">
+        <div className="flex gap-1">
           {/* Time Column */}
-          <div className="flex flex-col gap-1 pt-1 w-12">
+          <div className="flex flex-col gap-1">
+            {/* Empty space for date row alignment */}
+            <div className="h-12 flex items-center justify-center">
+              <div className="text-xs font-bold text-[#010618]"></div>
+            </div>
             {timeSlots.map((time) => (
-              <div key={time} className="h-20 flex flex-col items-center justify-start pt-1">
+              <div key={time} className="h-16 flex items-start justify-center pt-1">
                 <div className="text-sm font-bold text-[#010618]">{time}</div>
               </div>
             ))}
           </div>
 
-          {/* Days Grid */}
-          <div className="flex-1 flex gap-4">
-            {/* Monday - with classes */}
+          {/* Days Grid with Date Headers */}
+          <div className="flex-1 flex gap-1">
+            {/* Monday Column with Date */}
             <div className="flex-1 flex flex-col gap-1">
+              {/* Date Header */}
+              <div className="h-12 flex flex-col items-center justify-center">
+                <div className="text-xl font-bold text-[#21283F]">18</div>
+                <div className="text-xs font-semibold text-[#21283F]">Mon</div>
+              </div>
+              {/* Class Blocks */}
               {classes.map((cls, i) => (
                 <div
                   key={i}
-                  className={`${cls.color} rounded-lg p-2 flex flex-col justify-center items-center gap-1 w-20 h-20`}
+                  className={`${cls.color} rounded-lg flex flex-col justify-center items-center gap-1 h-16`}
                 >
-                  <div className="text-xs font-bold text-black text-center leading-tight">{cls.name}</div>
-                  <div className="text-[7px] font-bold text-[#010618] text-center">{cls.room}</div>
+                  <div className="text-xs font-bold text-black">{cls.name}</div>
+                  <div className="text-[8px] font-normal text-[#010618]">{cls.room}</div>
                 </div>
               ))}
             </div>
 
-            {/* Other days - empty slots */}
-            {[...Array(4)].map((_, dayIndex) => (
-              <div key={dayIndex} className="flex-1 flex flex-col gap-1">
-                {timeSlots.map((_, i) => (
-                  <div key={i} className="bg-slate-100 rounded-lg w-20 h-20"></div>
-                ))}
+            {/* Tuesday Column with Date */}
+            <div className="flex-1 flex flex-col gap-1">
+              <div className="h-12 flex flex-col items-center justify-center">
+                <div className="text-xl font-bold text-[#21283F]">19</div>
+                <div className="text-xs font-normal text-slate-400">Tue</div>
               </div>
-            ))}
+              {timeSlots.map((_, i) => (
+                <div key={i} className="bg-slate-100 rounded-lg h-16"></div>
+              ))}
+            </div>
+
+            {/* Wednesday Column with Date */}
+            <div className="flex-1 flex flex-col gap-1">
+              <div className="h-12 flex flex-col items-center justify-center">
+                <div className="text-xl font-bold text-[#21283F]">20</div>
+                <div className="text-xs font-normal text-slate-400">Wed</div>
+              </div>
+              {timeSlots.map((_, i) => (
+                <div key={i} className="bg-slate-100 rounded-lg h-16"></div>
+              ))}
+            </div>
+
+            {/* Thursday Column with Date */}
+            <div className="flex-1 flex flex-col gap-1">
+              <div className="h-12 flex flex-col items-center justify-center">
+                <div className="text-xl font-bold text-[#21283F]">21</div>
+                <div className="text-xs font-normal text-slate-400">Thu</div>
+              </div>
+              {timeSlots.map((_, i) => (
+                <div key={i} className="bg-slate-100 rounded-lg h-16"></div>
+              ))}
+            </div>
+
+            {/* Friday Column with Date */}
+            <div className="flex-1 flex flex-col gap-1">
+              <div className="h-12 flex flex-col items-center justify-center">
+                <div className="text-xl font-bold text-[#21283F]">22</div>
+                <div className="text-xs font-normal text-slate-400">Fri</div>
+              </div>
+              {timeSlots.map((_, i) => (
+                <div key={i} className="bg-slate-100 rounded-lg h-16"></div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
