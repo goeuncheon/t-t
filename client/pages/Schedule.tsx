@@ -1,5 +1,7 @@
 import BottomNav from "@/components/BottomNav";
 
+import BottomNav from "@/components/BottomNav";
+
 const scheduleDays = [
   { date: 18, day: "Mon", badge: "2", type: "today" as const },
   { date: 19, day: "Tue", badge: "1" },
