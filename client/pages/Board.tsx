@@ -1,86 +1,23 @@
 import { Fragment, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomNav from "@/components/BottomNav";
+import {
+  BoardTab,
+  boardData,
+  getPostsForTabAndPage,
+  TOTAL_PAGES,
+} from "@/data/board";
 
-const tabs = ["공지사항", "행사", "자료실"] as const;
-type BoardTab = (typeof tabs)[number];
-
-interface BoardPost {
-  id: number;
-  title: string;
-  author: string;
-  date: string;
-}
-
-const noticeFirstPagePosts: BoardPost[] = [
-  { id: 1, title: "도서관 교육 일정 안내", author: "홍길동", date: "01.01" },
-  { id: 2, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 3, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 4, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 5, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 6, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 7, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 8, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 9, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 10, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 11, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 12, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 13, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 14, title: "공지사항 예시", author: "OOO", date: "00.00" },
-  { id: 15, title: "공지사항 예시", author: "OOO", date: "00.00" },
-];
-
-const createFirstPagePosts = (firstPost: BoardPost, fillerTitle: string): BoardPost[] => {
-  const filler = Array.from({ length: 14 }, (_, index) => ({
-    id: index + 2,
-    title: fillerTitle,
-    author: "OOO",
-    date: "00.00",
-  }));
-  return [firstPost, ...filler];
-};
-
-const eventFirstPagePosts = createFirstPagePosts(
-  { id: 1, title: "겨울방학식 안내", author: "학생지원팀", date: "12.22" },
-  "행사 예시"
-);
-
-const archiveFirstPagePosts = createFirstPagePosts(
-  { id: 1, title: "급식 신청서 양식", author: "행정실", date: "03.01" },
-  "자료실 예시"
-);
-
-const fillerTitleByTab: Record<BoardTab, string> = {
-  공지사항: "공지사항 예시",
-  행사: "행사 예시",
-  자료실: "자료실 예시",
-};
-
-const createFillerPosts = (title: string): BoardPost[] =>
-  Array.from({ length: 15 }, (_, index) => ({
-    id: index + 1,
-    title,
-    author: "OOO",
-    date: "00.00",
-  }));
-
-const getPostsByTabAndPage = (tab: BoardTab, page: number): BoardPost[] => {
-  if (page === 1) {
-    if (tab === "공지사항") return noticeFirstPagePosts;
-    if (tab === "행사") return eventFirstPagePosts;
-    return archiveFirstPagePosts;
-  }
-  return createFillerPosts(fillerTitleByTab[tab]);
-};
+const tabs: BoardTab[] = ["공지사항", "행사", "자료실"];
 
 export default function Board() {
   const navigate = useNavigate();
   const [selectedTab, setSelectedTab] = useState<BoardTab>("공지사항");
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 5;
+  const [searchQuery, setSearchQuery] = useState("");
 
   const posts = useMemo(
-    () => getPostsByTabAndPage(selectedTab, currentPage),
+    () => getPostsForTabAndPage(selectedTab, currentPage),
     [selectedTab, currentPage]
   );
 
@@ -90,12 +27,32 @@ export default function Board() {
   };
 
   const handlePageChange = (page: number) => {
-    if (page < 1 || page > totalPages) return;
+    if (page < 1 || page > TOTAL_PAGES) return;
     setCurrentPage(page);
   };
 
+  const handlePostClick = (postId: number) => {
+    navigate(`/board/${encodeURIComponent(selectedTab)}/${postId}`);
+  };
+
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const keyword = searchQuery.trim().toLowerCase();
+    if (!keyword) return;
+
+    const targetPost = boardData[selectedTab].find((post) =>
+      post.title.toLowerCase().includes(keyword)
+    );
+
+    if (targetPost) {
+      handlePostClick(targetPost.id);
+    } else {
+      alert("일치하는 게시물을 찾지 못했습니다.");
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-white pb-36 flex flex-col">
+    <div className="min-h-screen bg-white pb-24 flex flex-col">
       {/* Status Bar */}
       <div className="flex justify-between items-center px-4 py-3">
         <div className="text-xs font-normal">9:41</div>
@@ -123,13 +80,13 @@ export default function Board() {
       </div>
 
       {/* Segmented Control */}
-      <div className="px-6 py-6">
+      <div className="px-6 py-5">
         <div className="flex h-11 p-0.5 justify-center items-center rounded-3xl bg-[rgba(235,235,245,0.6)]">
           {tabs.map((tab, index) => {
             const isActive = selectedTab === tab;
             const isLast = index === tabs.length - 1;
             return (
-              <div key={tab} className="flex flex-1 h-full items-center">
+              <Fragment key={tab}>
                 <button
                   onClick={() => handleTabChange(tab)}
                   className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
@@ -140,8 +97,8 @@ export default function Board() {
                     {tab}
                   </span>
                 </button>
-                {!isLast && <div className="w-px h-3 bg-[#21283F] opacity-30 rounded-full ml-2" aria-hidden />}
-              </div>
+                {!isLast && <div className="w-px h-3 bg-[#21283F] opacity-30 rounded-full" aria-hidden />}
+              </Fragment>
             );
           })}
         </div>
@@ -149,13 +106,21 @@ export default function Board() {
 
       {/* Search Bar */}
       <div className="px-6 pb-4">
-        <div className="flex gap-2">
+        <form className="flex gap-2" onSubmit={handleSearch}>
           <div className="flex-1 flex items-center gap-2 px-4 py-2 border border-slate-300 rounded-full bg-white">
-            <input type="text" placeholder="Search ..." className="flex-1 outline-none text-sm" />
-            <svg className="w-5 h-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <circle cx="11" cy="11" r="8" strokeWidth="2" />
-              <path d="M21 21L16.65 16.65" strokeWidth="2" strokeLinecap="round" />
-            </svg>
+            <input
+              type="text"
+              placeholder="제목 검색"
+              className="flex-1 outline-none text-sm"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+            />
+            <button type="submit">
+              <svg className="w-5 h-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="11" cy="11" r="8" strokeWidth="2" />
+                <path d="M21 21L16.65 16.65" strokeWidth="2" strokeLinecap="round" />
+              </svg>
+            </button>
           </div>
           <button
             type="button"
@@ -166,49 +131,56 @@ export default function Board() {
               <path d="M19.3 8.925L15.05 4.725L16.45 3.325C16.8333 2.94167 17.3043 2.75 17.863 2.75C18.4217 2.75 18.8923 2.94167 19.275 3.325L20.675 4.725C21.0583 5.10833 21.2583 5.571 21.275 6.113C21.2917 6.655 21.1083 7.11733 20.725 7.5L19.3 8.925ZM17.85 10.4L7.25 21H3V16.75L13.6 6.15L17.85 10.4Z" />
             </svg>
           </button>
-        </div>
+        </form>
       </div>
 
       <div className="border-t border-slate-200" />
 
       {/* Posts List */}
-      <div className="flex-1 px-6 space-y-4 pt-4 pb-6">
-        {posts.map((post) => (
-          <div key={`${selectedTab}-${currentPage}-${post.id}`} className="flex items-center gap-3 py-2">
-            <div className="text-sm text-slate-600 w-6">{post.id.toString().padStart(2, "0")}</div>
-            <div className="flex-1">
-              <div className="text-sm font-medium underline text-[#010618]">{post.title}</div>
-            </div>
-            <div className="flex gap-4 text-sm text-slate-600">
-              <span>{post.author}</span>
-              <span>{post.date}</span>
-            </div>
-          </div>
-        ))}
+      <div className="flex-1 px-6 pt-4 pb-4">
+        <div className="space-y-3">
+          {posts.map((post) => (
+            <button
+              key={`${selectedTab}-${post.id}`}
+              type="button"
+              onClick={() => handlePostClick(post.id)}
+              className="flex items-center gap-3 py-1 w-full text-left"
+            >
+              <div className="text-sm text-slate-600 w-6">{post.id.toString().padStart(2, "0")}</div>
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-[#010618] underline-offset-2 underline">
+                  {post.title}
+                </div>
+              </div>
+              <div className="flex gap-3 text-sm text-slate-600">
+                <span>{post.author}</span>
+                <span>{post.date}</span>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Pagination */}
       <div className="px-6 pb-6">
-        <div className="flex items-center justify-center gap-3 py-4 rounded-2xl bg-white shadow-[0_4px_18px_rgba(0,0,0,0.04)]">
+        <div className="flex items-center justify-center gap-3">
           <button
-            className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center disabled:opacity-40"
+            className="w-9 h-9 flex items-center justify-center text-[#80B3FF] disabled:opacity-30"
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
           >
-            <svg className="w-3.5 h-3.5 text-[#80B3FF]" viewBox="0 0 19 22" fill="currentColor">
+            <svg className="w-4 h-4" viewBox="0 0 19 22" fill="currentColor">
               <path d="M1.38426 13.4779C-0.461419 12.2981 -0.461416 9.60219 1.38426 8.42241L13.8141 0.477165C15.811 -0.799273 18.4298 0.634884 18.4298 3.00489V18.8954C18.4298 21.2654 15.811 22.6995 13.8141 21.4231L1.38426 13.4779Z" />
             </svg>
           </button>
-          <div className="flex items-center gap-1.5">
-            {Array.from({ length: totalPages }, (_, index) => {
+          <div className="flex items-center gap-2">
+            {Array.from({ length: TOTAL_PAGES }, (_, index) => {
               const page = index + 1;
               const isActive = page === currentPage;
               return (
                 <button
                   key={page}
-                  className={`w-9 h-9 rounded-full flex items-center justify-center text-sm ${
-                    isActive ? "bg-[#80B3FF] text-white font-semibold" : "text-slate-500"
-                  }`}
+                  className={`text-sm font-semibold ${isActive ? "text-[#010618]" : "text-slate-400"}`}
                   onClick={() => handlePageChange(page)}
                 >
                   {page}
@@ -217,11 +189,11 @@ export default function Board() {
             })}
           </div>
           <button
-            className="w-9 h-9 rounded-full border border-slate-200 flex items-center justify-center disabled:opacity-40"
+            className="w-9 h-9 flex items-center justify-center text-[#80B3FF] disabled:opacity-30"
             onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
+            disabled={currentPage === TOTAL_PAGES}
           >
-            <svg className="w-3.5 h-3.5 text-[#80B3FF]" viewBox="0 0 19 22" fill="currentColor">
+            <svg className="w-4 h-4" viewBox="0 0 19 22" fill="currentColor">
               <path d="M17.0456 13.4779C18.8912 12.2981 18.8912 9.60219 17.0455 8.42241L4.61574 0.477165C2.61884 -0.799273 0 0.634884 0 3.00489V18.8954C0 21.2654 2.61884 22.6995 4.61574 21.4231L17.0456 13.4779Z" />
             </svg>
           </button>
