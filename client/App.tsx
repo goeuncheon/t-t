@@ -40,15 +40,19 @@ const App = () => (
   </QueryClientProvider>
 );
 
-type RootedElement = HTMLElement & { __root?: Root };
+declare global {
+  interface Window {
+    __appRoot?: Root;
+  }
+}
 
-const container = document.getElementById("root") as RootedElement;
+const container = document.getElementById("root");
 if (!container) {
   throw new Error("Root container not found");
 }
 
-if (!container.__root) {
-  container.__root = createRoot(container);
+if (!window.__appRoot) {
+  window.__appRoot = createRoot(container);
 }
 
-container.__root.render(<App />);
+window.__appRoot.render(<App />);
