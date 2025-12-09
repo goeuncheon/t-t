@@ -58,7 +58,8 @@ if (!container) {
   throw new Error("Root container not found");
 }
 
-let root = container.__appRoot ?? container._reactRootContainer ?? window.__appRoot;
+let root =
+  container.__appRoot ?? container._reactRootContainer ?? window.__appRoot;
 
 if (!root) {
   root = createRoot(container);

@@ -44,7 +44,7 @@ export default function BottomNav({ currentPage }: BottomNavProps) {
           }`}
         >
           <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C11.5 2 11 2.19 10.59 2.59C10.2 3 10 3.5 10 4V4.29C7.03 5.17 5 7.9 5 11V17L3 19V20H21V19L19 17V11C19 7.9 16.97 5.17 14 4.29V4C14 3.5 13.8 3 13.41 2.59C13 2.19 12.5 2 12 2M12 23C10.9 23 10 22.1 10 21H14C14 22.1 13.1 23 12 23Z"/>
+            <path d="M12 2C11.5 2 11 2.19 10.59 2.59C10.2 3 10 3.5 10 4V4.29C7.03 5.17 5 7.9 5 11V17L3 19V20H21V19L19 17V11C19 7.9 16.97 5.17 14 4.29V4C14 3.5 13.8 3 13.41 2.59C13 2.19 12.5 2 12 2M12 23C10.9 23 10 22.1 10 21H14C14 22.1 13.1 23 12 23Z" />
           </svg>
           <span className="text-xs whitespace-nowrap">리마인더</span>
         </Link>
