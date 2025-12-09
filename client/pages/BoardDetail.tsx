@@ -82,7 +82,7 @@ export default function BoardDetail() {
         <div className="flex justify-between items-center pt-4">
           <button
             type="button"
-            onClick={() => prevPost && handleNavigate(validTab, prevPost.id, navigate)}
+            onClick={() => prevPost && navigate(`/board/${encodeURIComponent(validTab)}/${prevPost.id}`)}
             disabled={!prevPost}
             className={`text-sm font-semibold ${prevPost ? "text-[#010618]" : "text-slate-300"}`}
           >
@@ -90,7 +90,7 @@ export default function BoardDetail() {
           </button>
           <button
             type="button"
-            onClick={() => nextPost && handleNavigate(validTab, nextPost.id, navigate)}
+            onClick={() => nextPost && navigate(`/board/${encodeURIComponent(validTab)}/${nextPost.id}`)}
             disabled={!nextPost}
             className={`text-sm font-semibold ${nextPost ? "text-[#010618]" : "text-slate-300"}`}
           >
@@ -103,7 +103,3 @@ export default function BoardDetail() {
     </div>
   );
 }
-
-const handleNavigate = (tab: BoardTab, id: number, navigate: ReturnType<typeof useNavigate>) => {
-  navigate(`/board/${encodeURIComponent(tab)}/${id}`);
-};
