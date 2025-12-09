@@ -13,6 +13,7 @@ import Reminder from "./pages/Reminder";
 import ReminderForm from "./pages/ReminderForm";
 import Board from "./pages/Board";
 import BoardWrite from "./pages/BoardWrite";
+import BoardDetail from "./pages/BoardDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/reminder/edit/:id" element={<ReminderForm />} />
           <Route path="/board" element={<Board />} />
           <Route path="/board/write" element={<BoardWrite />} />
+          <Route path="/board/:tab/:id" element={<BoardDetail />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
