@@ -106,7 +106,7 @@ export default function Index() {
             href={FIREBASE_APP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-20 mt-10 block"
+            className="relative z-20 mt-10 inline-block"
           >
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800"
