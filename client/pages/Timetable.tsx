@@ -25,32 +25,16 @@ const timeSlots = [
 ];
 
 const days = [
-  { date: 18, day: "Mon", isToday: true, reminders: 2 },
-  { date: 19, day: "Tue", isToday: false, reminders: 1 },
-  { date: 20, day: "Wed", isToday: false, reminders: 0 },
-  { date: 21, day: "Thu", isToday: false, reminders: 3 },
-  { date: 22, day: "Fri", isToday: false, reminders: 0 },
+  { date: 18, day: "Mon", isToday: true },
+  { date: 19, day: "Tue", isToday: false },
+  { date: 20, day: "Wed", isToday: false },
+  { date: 21, day: "Thu", isToday: false },
+  { date: 22, day: "Fri", isToday: false },
 ];
-
-function ReminderBadge({ count = 0, highlight = false }: { count?: number; highlight?: boolean }) {
-  if (!count) {
-    return <div className="w-6 h-6" />;
-  }
-
-  return (
-    <div
-      className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-semibold ${
-        highlight ? "bg-white text-[#21283F]" : "bg-white text-[#21283F] border border-[#E9E9E9]"
-      }`}
-    >
-      {count}
-    </div>
-  );
-}
 
 export default function Timetable() {
   return (
-    <div className="h-screen bg-white flex flex-col overflow-hidden">
+    <div className="min-h-screen bg-white flex flex-col pb-24">
       {/* Status Bar */}
       <div className="flex justify-between items-center px-4 py-3 flex-shrink-0">
         <div className="text-xs font-normal">9:41</div>
@@ -91,56 +75,41 @@ export default function Timetable() {
       </div>
 
       {/* Timetable */}
-      <div className="flex-1 px-4 pb-4 min-h-0">
-        <div className="h-full w-full max-w-[420px] mx-auto rounded-[40px] bg-white shadow-[0_18px_50px_rgba(10,12,61,0.08)] p-4 flex flex-col gap-4">
-          {/* Date Section */}
-          <div className="grid grid-cols-[64px_repeat(5,minmax(0,1fr))] gap-2 items-start">
+      <div className="flex-1 px-4">
+        <div className="w-full max-w-[420px] mx-auto flex flex-col gap-4">
+          <div className="grid grid-cols-[56px_repeat(5,minmax(0,1fr))] gap-2 items-end">
             <div />
             {days.map((day) => (
-              <div key={day.date} className="flex flex-col items-center gap-2">
-                <div
-                  className={`flex flex-col items-center gap-1 w-full ${
-                    day.isToday
-                      ? "rounded-full bg-[#80B3FF] px-3 py-4 text-white"
-                      : "px-2"
-                  }`}
-                >
-                  <span className={`text-xl font-bold ${day.isToday ? "text-white" : "text-[#21283F]"}`}>
-                    {day.date}
-                  </span>
-                  <span
-                    className={`text-xs font-semibold ${day.isToday ? "text-white" : "text-[#E9E9E9]"}`}
-                  >
-                    {day.day}
-                  </span>
-                  <ReminderBadge count={day.reminders} highlight={day.isToday} />
+              <div key={day.date} className="flex flex-col items-center gap-1">
+                <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
+                  {day.date}
                 </div>
+                <div className={`text-xs ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>{day.day}</div>
               </div>
             ))}
           </div>
 
-          {/* Grid Rows */}
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col gap-3">
             {timeSlots.map((slot, index) => (
-              <div key={slot.label} className="flex-1 flex flex-col">
+              <div key={slot.label} className="flex flex-col gap-1">
                 <div className="h-px bg-[#21283F] opacity-40" />
-                <div className="flex gap-2 flex-1 items-stretch">
-                  <div className="w-16 flex flex-col items-center justify-center text-[#010618] leading-tight">
+                <div className="grid grid-cols-[56px_repeat(5,minmax(0,1fr))] gap-2 items-center">
+                  <div className="flex flex-col text-left text-[#010618] leading-tight">
                     <span className="text-sm font-semibold">{slot.label}</span>
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
                   {days.map((day) => (
-                    <div key={`${day.date}-${slot.label}`} className="flex-1 flex items-center justify-center">
+                    <div key={`${day.date}-${slot.label}`} className="flex justify-center">
                       {day.isToday && index < classes.length ? (
                         <div
-                          className={`${classes[index].color} w-full max-w-[60px] rounded-2xl px-2 py-3 flex flex-col items-center gap-1`}
+                          className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[12px] px-2 py-2 flex flex-col items-center justify-center gap-1`}
                         >
                           <span className="text-xs font-bold text-black leading-none">{classes[index].name}</span>
-                          <span className="text-[8px] font-medium text-[#010618] leading-none">{classes[index].room}</span>
+                          <span className="text-[9px] font-medium text-[#010618] leading-none">{classes[index].room}</span>
                         </div>
                       ) : (
-                        <div className="w-full max-w-[60px] h-[55px] rounded-2xl bg-[#E9E9E9]" />
+                        <div className="w-full max-w-[54px] h-[54px] rounded-[12px] bg-[#E6E6F0]" />
                       )}
                     </div>
                   ))}
