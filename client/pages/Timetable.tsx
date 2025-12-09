@@ -112,7 +112,7 @@ export default function Timetable() {
       </div>
 
       {/* Calendar Header */}
-      <div className="px-6 pt-4 pb-2 flex-shrink-0">
+      <div className="px-6 pt-4 pb-2 mb-6 flex-shrink-0">
         <div className="flex items-center justify-center gap-6">
           <button className="p-2">
             <svg className="w-6 h-6 text-[#010618]" viewBox="0 0 24 24" fill="currentColor">
@@ -129,7 +129,7 @@ export default function Timetable() {
       </div>
 
       {/* Timetable */}
-      <div className="flex-1 px-4 pb-4">
+      <div className="flex-1 px-4 pb-4 mt-6">
         <div className="w-full max-w-[420px] mx-auto flex flex-col gap-3.5">
           <div className="grid grid-cols-[34px_minmax(0,1fr)] gap-0 items-end">
             <div />
@@ -145,9 +145,9 @@ export default function Timetable() {
             </div>
           </div>
 
-          <div className="flex-1 flex flex-col gap-1.5">
+          <div className="flex-1 flex flex-col gap-2.5">
             {timeSlots.map((slot, index) => (
-              <div key={slot.label} className="flex flex-col gap-0.5">
+              <div key={slot.label} className="flex flex-col gap-1">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
                 <div className="grid grid-cols-[34px_minmax(0,1fr)] gap-0 items-center">
                   <div className="flex flex-col items-start justify-start text-left text-[#010618] leading-tight">
@@ -157,7 +157,7 @@ export default function Timetable() {
 
                   <div className="grid grid-cols-5 gap-4 -ml-4">
                     {days.map((day) => (
-                      <div key={`${day.date}-${slot.label}`} className="flex justify-center items-center py-0">
+                      <div key={`${day.date}-${slot.label}`} className="flex justify-center items-center py-3">
                         {day.isToday && index < classes.length ? (
                           <div
                             className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[9px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden`}
