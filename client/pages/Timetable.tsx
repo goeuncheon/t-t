@@ -149,15 +149,15 @@ export default function Timetable() {
             {timeSlots.map((slot, index) => (
               <div key={slot.label} className="flex flex-col gap-0.5">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
-                <div className="grid grid-cols-[34px_minmax(0,1fr)] gap-0 items-start">
-                  <div className="flex flex-col items-start justify-start text-left text-[#010618] leading-tight -ml-1 -mt-1">
-                    <span className="text-[11px] font-semibold">{slot.label}</span>
+                <div className="grid grid-cols-[32px_minmax(0,1fr)] gap-0 items-start">
+                  <div className="flex flex-col items-start justify-start text-left text-[#010618] leading-tight -ml-1 -mt-0.5">
+                    <span className="text-[10px] font-semibold">{slot.label}</span>
                     <span className="text-[8px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
                   <div className="grid grid-cols-5 gap-4 -ml-4">
                     {days.map((day) => (
-                      <div key={`${day.date}-${slot.label}`} className="flex justify-center items-center py-1">
+                      <div key={`${day.date}-${slot.label}`} className="flex justify-center items-center py-0.5">
                         {day.isToday && index < classes.length ? (
                           <div
                             className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[9px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden`}
