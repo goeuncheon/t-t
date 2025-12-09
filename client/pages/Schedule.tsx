@@ -38,9 +38,6 @@ const ReminderDot = ({
 export default function Schedule() {
   return (
     <div className="min-h-screen bg-white pb-24">
-      <div className="px-6 pt-6">
-        <h2 className="text-[32px] font-bold text-[#010618] tracking-tight">일정</h2>
-      </div>
       {/* Status Bar */}
       <div className="flex justify-between items-center px-4 py-3">
         <div className="text-xs font-normal">9:41</div>
@@ -61,6 +58,10 @@ export default function Schedule() {
             <div className="absolute -right-0.5 top-1 w-0.5 h-1 bg-slate-900 opacity-40 rounded-r-sm"></div>
           </div>
         </div>
+      </div>
+
+      <div className="px-6 pt-4">
+        <h2 className="text-[32px] font-bold text-[#010618] tracking-tight">일정</h2>
       </div>
 
       {/* Calendar Section */}
