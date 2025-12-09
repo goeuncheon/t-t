@@ -151,7 +151,7 @@ export default function Timetable() {
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
-                  <div className="grid grid-cols-5 gap-1">
+                  <div className="grid grid-cols-5 gap-3">
                     {days.map((day) => (
                       <div key={`${day.date}-${slot.label}`} className="flex justify-center py-0.5">
                         {day.isToday && index < classes.length ? (
