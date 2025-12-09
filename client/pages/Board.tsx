@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomNav from "@/components/BottomNav";
 
@@ -126,9 +126,8 @@ export default function Board() {
       <div className="px-6 py-6">
         <div className="flex h-11 p-0.5 justify-center items-center rounded-3xl bg-[rgba(235,235,245,0.6)]">
           {tabs.map((tab, index) => (
-            <>
+            <Fragment key={tab}>
               <button
-                key={tab}
                 onClick={() => handleTabChange(tab)}
                 className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
                   selectedTab === tab ? "bg-[#80B3FF] shadow-sm" : "bg-transparent"
@@ -143,7 +142,7 @@ export default function Board() {
                 </span>
               </button>
               {index < tabs.length - 1 && <div className="w-px h-3 bg-[#21283F] opacity-30 rounded-full" />}
-            </>
+            </Fragment>
           ))}
         </div>
       </div>
