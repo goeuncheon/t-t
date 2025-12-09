@@ -34,9 +34,9 @@ const days = [
 
 export default function Timetable() {
   return (
-    <div className="min-h-screen bg-white pb-24">
+    <div className="h-screen bg-white flex flex-col overflow-hidden">
       {/* Status Bar */}
-      <div className="flex justify-between items-center px-4 py-3">
+      <div className="flex justify-between items-center px-4 py-3 flex-shrink-0">
         <div className="text-xs font-normal">9:41</div>
         <div className="flex items-center gap-2">
           <svg className="w-4 h-4" viewBox="0 0 17 11" fill="none">
@@ -51,14 +51,14 @@ export default function Timetable() {
             <path d="M0.097 3.039C4.328 -1.013 11.004 -1.013 15.236 3.039C15.298 3.099 15.333 3.182 15.333 3.268C15.333 3.353 15.3 3.436 15.239 3.497L14.079 4.667C13.96 4.787 13.765 4.788 13.644 4.67C12.031 3.138 9.892 2.284 7.667 2.284C5.442 2.284 3.302 3.138 1.689 4.67C1.568 4.788 1.374 4.787 1.255 4.667L0.094 3.497C0.033 3.436 -0.0005 3.353 0 3.268C0.0006 3.182 0.035 3.099 0.097 3.039Z" fill="#010618" />
           </svg>
           <div className="w-6 h-3 border border-[#21283F] border-opacity-35 rounded-sm relative">
-            <div className="absolute inset-0.5 bg-slate-900 rounded-sm"></div>
-            <div className="absolute -right-0.5 top-1 w-0.5 h-1 bg-slate-900 opacity-40 rounded-r-sm"></div>
+            <div className="absolute inset-0.5 bg-slate-900 rounded-sm" />
+            <div className="absolute -right-0.5 top-1 w-0.5 h-1 bg-slate-900 opacity-40 rounded-r-sm" />
           </div>
         </div>
       </div>
 
       {/* Calendar Header */}
-      <div className="px-6 pt-6">
+      <div className="px-6 pt-4 pb-2 flex-shrink-0">
         <div className="flex items-center justify-center gap-6">
           <button className="p-2">
             <svg className="w-6 h-6 text-[#010618]" viewBox="0 0 24 24" fill="currentColor">
@@ -75,65 +75,52 @@ export default function Timetable() {
       </div>
 
       {/* Timetable */}
-      <div className="px-4 mt-6">
-        <div className="w-full max-w-[390px] mx-auto flex flex-col">
-          {/* Date Section Header */}
-          <div className="flex items-start gap-[26px] mb-1">
-            {days.map((day, index) => (
-              <div key={day.date} className="flex-1 flex flex-col justify-center items-center gap-0.5">
-                <div className={`text-xl font-bold ${day.isToday ? "text-[#21283F]" : "text-[#21283F]"}`}>
-                  {day.date}
-                </div>
-                <div className={`text-xs ${day.isToday ? "text-[#010618] font-normal" : "text-[#E9E9E9] font-bold"}`}>
+      <div className="flex-1 px-4 pb-4 min-h-0">
+        <div className="h-full w-full max-w-[420px] mx-auto rounded-[40px] bg-white shadow-[0_18px_50px_rgba(10,12,61,0.08)] p-4 flex flex-col gap-4">
+          {/* Date Section */}
+          <div className="grid grid-cols-[64px_repeat(5,minmax(0,1fr))] gap-2 items-end">
+            <div />
+            {days.map((day) => (
+              <div key={day.date} className="flex flex-col items-center gap-1">
+                <div className="text-xl font-bold text-[#21283F]">{day.date}</div>
+                <div
+                  className={`text-xs ${day.isToday ? "text-[#010618] font-normal" : "text-[#E9E9E9] font-semibold"}`}
+                >
                   {day.day}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Timetable Grid */}
-          <div className="flex flex-col">
+          {/* Grid Rows */}
+          <div className="flex-1 flex flex-col">
             {timeSlots.map((slot, index) => (
-              <div key={slot.label}>
-                {/* Border Line */}
-                <div className="w-full h-[0.2px] bg-[#21283F] opacity-40" />
+              <div key={slot.label} className="flex-1 flex flex-col">
+                <div className="h-px bg-[#21283F] opacity-40" />
+                <div className="flex gap-2 flex-1 items-stretch">
+                  <div className="w-16 flex flex-col items-center justify-center text-[#010618] leading-tight">
+                    <span className="text-sm font-semibold">{slot.label}</span>
+                    <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
+                  </div>
 
-                {/* Time Row */}
-                <div className="flex items-start gap-[26px] h-[60px]">
-                  {days.map((day, dayIndex) => (
-                    <div key={`${day.date}-${slot.label}`} className="flex-1 flex flex-col justify-center items-center relative h-full">
-                      {/* Time Label (only on first day) */}
-                      {dayIndex === 0 && (
-                        <div className="absolute left-0 top-0 flex flex-col justify-center items-center gap-0.5">
-                          <div className="text-xs font-bold text-[#010618]">{slot.label}</div>
-                          <div className="text-[8px] font-normal text-[#010618]">{slot.period}</div>
+                  {days.map((day) => (
+                    <div key={`${day.date}-${slot.label}`} className="flex-1 flex items-center justify-center">
+                      {day.isToday && index < classes.length ? (
+                        <div
+                          className={`${classes[index].color} w-full max-w-[60px] rounded-2xl px-2 py-3 flex flex-col items-center gap-1`}
+                        >
+                          <span className="text-xs font-bold text-black leading-none">{classes[index].name}</span>
+                          <span className="text-[8px] font-medium text-[#010618] leading-none">{classes[index].room}</span>
                         </div>
-                      )}
-
-                      {/* Class Block (only for Monday with actual classes) */}
-                      {day.isToday && index < classes.length && (
-                        <div className={`w-[53px] h-[55px] rounded-lg ${classes[index].color} p-3 flex flex-col justify-center items-center gap-1`}>
-                          <div className="text-xs font-bold text-black leading-none">
-                            {classes[index].name}
-                          </div>
-                          <div className="text-[8px] font-normal text-[#010618] leading-none">
-                            {classes[index].room}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Placeholder for other days */}
-                      {!day.isToday && (
-                        <div className="w-[53px] h-[55px] rounded-lg bg-[#E9E9E9]" />
+                      ) : (
+                        <div className="w-full max-w-[60px] h-[55px] rounded-2xl bg-[#E9E9E9]" />
                       )}
                     </div>
                   ))}
                 </div>
               </div>
             ))}
-
-            {/* Final Border Line */}
-            <div className="w-full h-[0.2px] bg-[#21283F] opacity-40" />
+            <div className="h-px bg-[#21283F] opacity-40" />
           </div>
         </div>
       </div>
