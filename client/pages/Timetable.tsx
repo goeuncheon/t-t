@@ -57,7 +57,7 @@ export default function Timetable() {
         </div>
 
         {/* Date Row */}
-        <div className="flex items-start gap-6 mb-6">
+        <div className="flex items-start justify-between gap-4 mb-8">
           <div className="flex-1 flex flex-col items-center gap-0.5">
             <div className="text-xl font-bold text-[#21283F]">18</div>
             <div className="text-xs font-semibold text-[#21283F]">Mon</div>
@@ -75,7 +75,7 @@ export default function Timetable() {
 
           <div className="flex-1 flex flex-col items-center gap-0.5">
             <div className="text-xl font-bold text-[#21283F]">21</div>
-            <div className="text-xs font-semibold text-[#21283F]">Thu</div>
+            <div className="text-xs font-normal text-slate-400">Thu</div>
           </div>
 
           <div className="flex-1 flex flex-col items-center gap-0.5">
@@ -89,25 +89,25 @@ export default function Timetable() {
       <div className="px-6">
         <div className="flex gap-2">
           {/* Time Column */}
-          <div className="flex flex-col gap-1 pt-1">
+          <div className="flex flex-col gap-1 pt-1 w-12">
             {timeSlots.map((time) => (
-              <div key={time} className="h-16 flex flex-col items-start justify-start">
+              <div key={time} className="h-20 flex flex-col items-center justify-start pt-1">
                 <div className="text-sm font-bold text-[#010618]">{time}</div>
               </div>
             ))}
           </div>
 
           {/* Days Grid */}
-          <div className="flex-1 flex gap-2">
+          <div className="flex-1 flex gap-4">
             {/* Monday - with classes */}
             <div className="flex-1 flex flex-col gap-1">
               {classes.map((cls, i) => (
                 <div
                   key={i}
-                  className={`${cls.color} rounded-lg p-2 flex flex-col justify-center items-center gap-1 h-16`}
+                  className={`${cls.color} rounded-lg p-2 flex flex-col justify-center items-center gap-1 w-20 h-20`}
                 >
-                  <div className="text-xs font-bold text-black">{cls.name}</div>
-                  <div className="text-[8px] font-normal text-[#010618]">{cls.room}</div>
+                  <div className="text-xs font-bold text-black text-center leading-tight">{cls.name}</div>
+                  <div className="text-[7px] font-bold text-[#010618] text-center">{cls.room}</div>
                 </div>
               ))}
             </div>
@@ -116,7 +116,7 @@ export default function Timetable() {
             {[...Array(4)].map((_, dayIndex) => (
               <div key={dayIndex} className="flex-1 flex flex-col gap-1">
                 {timeSlots.map((_, i) => (
-                  <div key={i} className="bg-slate-100 rounded-lg h-16"></div>
+                  <div key={i} className="bg-slate-100 rounded-lg w-20 h-20"></div>
                 ))}
               </div>
             ))}
