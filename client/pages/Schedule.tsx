@@ -1,7 +1,6 @@
 import BottomNav from "@/components/BottomNav";
 
 export default function Schedule() {
-
   return (
     <div className="min-h-screen bg-white pb-24">
       {/* Status Bar */}
@@ -28,16 +27,29 @@ export default function Schedule() {
 
       {/* Calendar Section */}
       <div className="px-6 py-6">
-        <h1 className="text-xl font-bold text-center mb-6">2025 / 11</h1>
+        {/* Date Header with Arrows */}
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <button className="p-2">
+            <svg className="w-6 h-6 text-[#010618]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <h1 className="text-xl font-bold text-center">2025 / 11</h1>
+          <button className="p-2">
+            <svg className="w-6 h-6 text-[#010618]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+            </svg>
+          </button>
+        </div>
 
         {/* Date Row */}
         <div className="flex items-start gap-6 mb-6 relative">
-          <div className="flex-1 flex flex-col items-center gap-0.5">
-            <div className="text-xl font-bold text-[#21283F]">18</div>
-            <div className="text-xs text-[#21283F]">Mon</div>
+          <div className="flex-1 flex flex-col items-center gap-0.5 bg-[#80B3FF] rounded-2xl py-2 px-1">
+            <div className="text-2xl font-bold text-white">18</div>
+            <div className="text-xs font-bold text-white">Mon</div>
             <div className="relative mt-1">
-              <div className="w-4 h-4 bg-[#F66B6B] rounded-full flex items-center justify-center">
-                <span className="text-[#21283F] text-xs font-normal">2</span>
+              <div className="w-4 h-4 bg-white rounded-full flex items-center justify-center">
+                <span className="text-[#21283F] text-xs font-bold">2</span>
               </div>
             </div>
           </div>
@@ -47,7 +59,7 @@ export default function Schedule() {
             <div className="text-xs text-slate-400">Tue</div>
             <div className="relative mt-1">
               <div className="w-4 h-4 bg-[#F66B6B] rounded-full flex items-center justify-center">
-                <span className="text-[#21283F] text-xs font-normal">1</span>
+                <span className="text-white text-xs font-normal">1</span>
               </div>
             </div>
           </div>
@@ -62,7 +74,7 @@ export default function Schedule() {
             <div className="text-xs text-[#21283F]">Thu</div>
             <div className="relative mt-1">
               <div className="w-4 h-4 bg-[#F66B6B] rounded-full flex items-center justify-center">
-                <span className="text-[#21283F] text-xs font-normal">3</span>
+                <span className="text-white text-xs font-normal">3</span>
               </div>
             </div>
           </div>
@@ -101,7 +113,7 @@ export default function Schedule() {
                 <div className="w-px h-4.5 bg-[#21283F]" />
                 <div className="flex items-center gap-1">
                   <div className="w-4 h-4 bg-[#F66B6B] rounded-full flex items-center justify-center">
-                    <span className="text-[#21283F] text-xs text-center">1</span>
+                    <span className="text-white text-xs text-center">1</span>
                   </div>
                   <div className="text-xs text-[#010618] text-center">리마인더</div>
                 </div>
@@ -134,7 +146,7 @@ export default function Schedule() {
               <div className="w-px h-4.5 bg-[#21283F]" />
               <div className="flex items-center gap-1">
                 <div className="w-4 h-4 bg-[#F66B6B] rounded-full flex items-center justify-center">
-                  <span className="text-[#21283F] text-xs text-center">1</span>
+                  <span className="text-white text-xs text-center">1</span>
                 </div>
                 <div className="text-xs text-[#010618] text-center">리마인더</div>
               </div>

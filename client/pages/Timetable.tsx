@@ -13,7 +13,7 @@ export default function Timetable() {
     { name: "수업 9", room: "1학년 9반", color: "bg-[#D2D2D2]" },
   ];
 
-  const timeSlots = ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00"];
+  const timeSlots = ["09", "10", "11", "12", "13", "14", "15", "16", "17"];
 
   return (
     <div className="min-h-screen bg-white pb-24">
@@ -41,60 +41,73 @@ export default function Timetable() {
 
       {/* Calendar Section */}
       <div className="px-6 py-6">
-        <h1 className="text-xl font-bold text-center mb-6">2025 / 11</h1>
+        {/* Date Header with Arrows */}
+        <div className="flex items-center justify-center gap-4 mb-6">
+          <button className="p-2">
+            <svg className="w-6 h-6 text-[#010618]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+            </svg>
+          </button>
+          <h1 className="text-xl font-bold text-center">2025 / 11</h1>
+          <button className="p-2">
+            <svg className="w-6 h-6 text-[#010618]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+            </svg>
+          </button>
+        </div>
 
         {/* Date Row */}
         <div className="flex items-start gap-6 mb-6">
           <div className="flex-1 flex flex-col items-center gap-0.5">
             <div className="text-xl font-bold text-[#21283F]">18</div>
-            <div className="text-xs text-[#21283F]">Mon</div>
+            <div className="text-xs font-semibold text-[#21283F]">Mon</div>
           </div>
 
           <div className="flex-1 flex flex-col items-center gap-0.5">
             <div className="text-xl font-bold text-[#21283F]">19</div>
-            <div className="text-xs text-slate-400">Tue</div>
+            <div className="text-xs font-normal text-slate-400">Tue</div>
           </div>
 
           <div className="flex-1 flex flex-col items-center gap-0.5">
             <div className="text-xl font-bold text-[#21283F]">20</div>
-            <div className="text-xs text-slate-400">Wed</div>
+            <div className="text-xs font-normal text-slate-400">Wed</div>
           </div>
 
           <div className="flex-1 flex flex-col items-center gap-0.5">
             <div className="text-xl font-bold text-[#21283F]">21</div>
-            <div className="text-xs text-[#21283F]">Thu</div>
+            <div className="text-xs font-semibold text-[#21283F]">Thu</div>
           </div>
 
           <div className="flex-1 flex flex-col items-center gap-0.5">
             <div className="text-xl font-bold text-[#21283F]">22</div>
-            <div className="text-xs text-slate-400">Fri</div>
+            <div className="text-xs font-normal text-slate-400">Fri</div>
           </div>
         </div>
       </div>
 
       {/* Timetable Grid */}
       <div className="px-6">
-        <div className="flex gap-3">
+        <div className="flex gap-2">
           {/* Time Column */}
-          <div className="flex flex-col gap-1 pt-2">
+          <div className="flex flex-col gap-1 pt-1">
             {timeSlots.map((time) => (
-              <div key={time} className="h-14 flex items-start">
-                <div className="text-xs font-bold text-[#010618]">{time.split(":")[0]}</div>
+              <div key={time} className="h-16 flex flex-col items-start justify-start">
+                <div className="text-sm font-bold text-[#010618]">{time}</div>
               </div>
             ))}
           </div>
 
           {/* Days Grid */}
-          <div className="flex-1 flex gap-3">
+          <div className="flex-1 flex gap-2">
             {/* Monday - with classes */}
             <div className="flex-1 flex flex-col gap-1">
               {classes.map((cls, i) => (
                 <div
                   key={i}
-                  className={`${cls.color} rounded-lg p-3 flex flex-col justify-center items-center gap-1 h-14`}
+                  className={`${cls.color} rounded-lg p-2 flex flex-col justify-center items-center gap-1 h-16`}
                 >
                   <div className="text-xs font-bold text-black">{cls.name}</div>
-                  <div className="text-[8px] text-[#010618]">{cls.room}</div>
+                  <div className="text-[8px] font-normal text-[#010618]">{cls.room}</div>
                 </div>
               ))}
             </div>
@@ -103,7 +116,7 @@ export default function Timetable() {
             {[...Array(4)].map((_, dayIndex) => (
               <div key={dayIndex} className="flex-1 flex flex-col gap-1">
                 {timeSlots.map((_, i) => (
-                  <div key={i} className="bg-slate-100 rounded-lg h-14"></div>
+                  <div key={i} className="bg-slate-100 rounded-lg h-16"></div>
                 ))}
               </div>
             ))}
