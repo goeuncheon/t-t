@@ -48,13 +48,24 @@ declare global {
   }
 }
 
-const container = document.getElementById("root");
+type RootedContainer = HTMLElement & {
+  __appRoot?: Root;
+  _reactRootContainer?: Root;
+};
+
+const container = document.getElementById("root") as RootedContainer | null;
 if (!container) {
   throw new Error("Root container not found");
 }
 
-if (!window.__appRoot) {
-  window.__appRoot = createRoot(container);
+let root = container.__appRoot ?? container._reactRootContainer ?? window.__appRoot;
+
+if (!root) {
+  root = createRoot(container);
+  container._reactRootContainer = root;
 }
 
-window.__appRoot.render(<App />);
+container.__appRoot = root;
+window.__appRoot = root;
+
+root.render(<App />);
