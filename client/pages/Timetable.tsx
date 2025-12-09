@@ -77,16 +77,18 @@ export default function Timetable() {
       {/* Timetable */}
       <div className="flex-1 px-4 pb-4">
         <div className="w-full max-w-[420px] mx-auto flex flex-col gap-4">
-          <div className="grid grid-cols-[56px_repeat(5,minmax(0,1fr))] gap-x-1.5 gap-y-2 items-end">
-            <div />
-            {days.map((day) => (
-              <div key={day.date} className="flex flex-col items-center gap-1">
-                <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
-                  {day.date}
+          <div className="flex items-end gap-1.5">
+            <div className="w-14" />
+            <div className="grid flex-1 grid-cols-5 gap-3">
+              {days.map((day) => (
+                <div key={day.date} className="flex flex-col items-center gap-1">
+                  <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
+                    {day.date}
+                  </div>
+                  <div className={`text-xs ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>{day.day}</div>
                 </div>
-                <div className={`text-xs ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>{day.day}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           <div className="flex-1 flex flex-col gap-2">
