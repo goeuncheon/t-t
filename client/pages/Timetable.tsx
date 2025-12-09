@@ -133,7 +133,7 @@ export default function Timetable() {
         <div className="w-full max-w-[420px] mx-auto flex flex-col gap-3.5">
           <div className="grid grid-cols-[38px_minmax(0,1fr)] gap-0 items-end">
             <div />
-            <div className="grid grid-cols-5 gap-4 -ml-2">
+            <div className="grid grid-cols-5 gap-4 -ml-4">
               {days.map((day) => (
                 <div key={day.date} className="flex flex-col items-center gap-1">
                   <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
@@ -155,9 +155,9 @@ export default function Timetable() {
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
-                  <div className="grid grid-cols-5 gap-4 -ml-2">
+                  <div className="grid grid-cols-5 gap-4 -ml-4">
                     {days.map((day) => (
-                      <div key={`${day.date}-${slot.label}`} className="flex justify-center py-0.5">
+                      <div key={`${day.date}-${slot.label}`} className="flex justify-center items-center py-0">
                         {day.isToday && index < classes.length ? (
                           <div
                             className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[9px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden`}
