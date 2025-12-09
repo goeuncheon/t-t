@@ -33,7 +33,7 @@ export default function Board() {
       </div>
 
       {/* Segmented Control */}
-      <div className="px-6 py-8">
+      <div className="px-6 py-6">
         <div className="flex h-11 p-0.5 justify-center items-center rounded-3xl bg-[rgba(235,235,245,0.6)]">
           <button
             onClick={() => setSelectedTab("공지사항")}
