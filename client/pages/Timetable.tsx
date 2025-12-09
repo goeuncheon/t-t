@@ -161,16 +161,16 @@ export default function Timetable() {
                             <div className="w-full">
                               <AutoFitText
                                 text={classes[index].name}
-                                max={12}
-                                min={9}
+                                max={11}
+                                min={8}
                                 className="font-semibold text-black leading-tight tracking-[-0.02em]"
                               />
                             </div>
                             <div className="w-full">
                               <AutoFitText
                                 text={classes[index].room}
-                                max={9}
-                                min={7}
+                                max={8}
+                                min={6}
                                 className="text-[#010618] leading-tight tracking-[-0.01em]"
                               />
                             </div>
