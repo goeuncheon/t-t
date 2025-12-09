@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomNav from "@/components/BottomNav";
 
@@ -13,7 +13,7 @@ export default function BoardWrite() {
     navigate("/board");
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     setAttachmentName(file ? file.name : "파일을 선택하세요");
   };
