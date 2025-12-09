@@ -102,16 +102,18 @@ export default function Index() {
           </div>
 
           {/* Login Button */}
-          <button 
-            className="relative z-20 mt-10"
-            onClick={() => window.open(FIREBASE_APP_URL, "_blank", "noopener,noreferrer")}
+          <a 
+            href={FIREBASE_APP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative z-20 mt-10 block"
           >
             <img
               src="https://cdn.builder.io/api/v1/image/assets%2F54789b7bb2db40c3bb59c5ad8b27d3a0%2Fea9e28917f9f4d5aa91678914842b384?format=webp&width=800"
               alt="LOGIN"
               className="w-[55vw] max-w-[420px] min-w-[200px] h-auto sm:w-64 md:w-72 lg:w-80 xl:w-96 transition-all duration-300"
             />
-          </button>
+          </a>
         </div>
       </div>
     </div>
