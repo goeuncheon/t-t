@@ -72,24 +72,27 @@ export default function Timetable() {
             </svg>
           </button>
         </div>
-        <div className="mt-2 flex justify-between px-4 sm:px-8">
-          {days.map((day) => (
-            <div key={day.date} className="flex flex-col items-center">
-              <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#2E3147]"}`}>
-                {day.date}
+        <div className="mt-3 px-4 sm:px-8">
+          <div className="grid grid-cols-[56px_repeat(5,1fr)] gap-3 items-end">
+            <div className="h-6" />
+            {days.map((day) => (
+              <div key={day.date} className="flex flex-col items-center">
+                <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#2E3147]"}`}>
+                  {day.date}
+                </div>
+                <div className={`text-xs font-semibold ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>
+                  {day.day}
+                </div>
               </div>
-              <div className={`text-xs font-semibold ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>
-                {day.day}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Timetable Grid */}
       <div className="px-4 mt-4">
-        <div className="overflow-x-auto">
-          <div className="grid grid-cols-[56px_repeat(5,minmax(0,1fr))] gap-3 sm:gap-4 min-w-[360px]">
+        <div className="mx-auto w-full max-w-[430px]">
+          <div className="grid grid-cols-[56px_repeat(5,1fr)] gap-2.5 sm:gap-3">
             {/* Time Column */}
             <div className="flex flex-col items-center gap-2 sm:gap-3 pt-14">
               {timeSlots.map((slot) => (
