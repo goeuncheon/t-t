@@ -33,8 +33,6 @@ const days = [
 ];
 
 export default function Timetable() {
-  const rowTemplate = `repeat(${timeSlots.length}, minmax(52px, 1fr))`;
-
   return (
     <div className="min-h-screen bg-white pb-24">
       {/* Status Bar */}
@@ -74,12 +72,17 @@ export default function Timetable() {
             </svg>
           </button>
         </div>
-        <div className="mt-3 px-3">
-          <div className="mx-auto w-full max-w-[380px] grid grid-cols-[56px_repeat(5,1fr)] gap-2 items-end">
-            <div className="h-6" />
+      </div>
+
+      {/* Timetable Card */}
+      <div className="px-4 mt-6">
+        <div className="mx-auto w-full max-w-[420px] rounded-[40px] bg-white shadow-[0_18px_50px_rgba(10,12,61,0.08)] p-4">
+          {/* Day Header aligned with grid */}
+          <div className="grid grid-cols-[60px_repeat(5,1fr)] gap-2 items-end">
+            <div />
             {days.map((day) => (
-              <div key={day.date} className="flex flex-col items-center">
-                <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#2E3147]"}`}>
+              <div key={day.date} className="flex flex-col items-center gap-1">
+                <div className={`text-lg font-bold ${day.isToday ? "text-[#010618]" : "text-[#2E3147]"}`}>
                   {day.date}
                 </div>
                 <div className={`text-xs font-semibold ${day.isToday ? "text-[#010618]" : "text-slate-400"}`}>
@@ -88,61 +91,39 @@ export default function Timetable() {
               </div>
             ))}
           </div>
-        </div>
-      </div>
 
-      {/* Timetable Grid */}
-      <div className="px-3 mt-4">
-        <div className="mx-auto w-full max-w-[380px]">
-          <div className="rounded-[32px] bg-[#F5F5FA] p-3">
-            <div className="grid grid-cols-[56px_repeat(5,1fr)] gap-2">
-              {/* Time Column */}
-              <div className="grid gap-1.5 pt-6 text-[#010618] pr-1" style={{ gridTemplateRows: rowTemplate }}>
-                {timeSlots.map((slot) => (
-                  <div key={slot.label} className="flex flex-col items-start justify-center h-full leading-tight">
-                    <span className="text-[10px] font-semibold sm:text-sm">{slot.label}</span>
-                    <span className="text-[7px] font-semibold uppercase text-slate-400">
-                      {slot.period}
-                    </span>
+          {/* Hour Rows */}
+          <div className="mt-4 flex flex-col gap-3">
+            {timeSlots.map((slot, index) => (
+              <div key={slot.label} className="grid grid-cols-[60px_repeat(5,1fr)] gap-2 items-stretch">
+                <div className="flex flex-col justify-center text-left text-[#010618] leading-tight pl-1">
+                  <span className="text-sm font-semibold">{slot.label}</span>
+                  <span className="text-[10px] font-semibold uppercase text-slate-400">{slot.period}</span>
+                </div>
+
+                {days.map((day) => (
+                  <div
+                    key={`${day.date}-${slot.label}`}
+                    className="rounded-3xl border border-[#ECECF5] bg-[#F7F7FC] p-1 flex items-stretch"
+                  >
+                    {day.isToday ? (
+                      <div
+                        className={`${classes[index].color} w-full rounded-2xl px-3 py-2 flex flex-col justify-between items-start`}
+                      >
+                        <span className="text-xs font-semibold text-[#010618] leading-tight">
+                          {classes[index].name}
+                        </span>
+                        <span className="text-[10px] font-semibold text-[#010618] leading-tight opacity-80">
+                          {classes[index].room}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="w-full rounded-2xl bg-[#E6E6F0]" />
+                    )}
                   </div>
                 ))}
               </div>
-
-              {/* Day Columns */}
-              {days.map((day) => (
-                <div key={day.date} className="relative min-w-0">
-                  {day.isToday && (
-                    <div className="absolute inset-[-2px] sm:inset-[-4px] rounded-2xl bg-white"></div>
-                  )}
-
-                  <div className="relative grid gap-1.5" style={{ gridTemplateRows: rowTemplate }}>
-                    {(day.isToday ? classes : timeSlots).map((entry, index) => {
-                      if (day.isToday) {
-                        const cls = entry as (typeof classes)[number];
-                        return (
-                          <div
-                            key={cls.name}
-                            className={`${cls.color} w-full h-full rounded-2xl p-2 flex flex-col items-start justify-between`}
-                          >
-                            <span className="text-[10px] font-semibold text-[#010618] leading-tight">{cls.name}</span>
-                            <span className="text-[8px] font-semibold text-[#010618] leading-tight opacity-80">
-                              {cls.room}
-                            </span>
-                          </div>
-                        );
-                      }
-
-                      return (
-                        <div
-                          key={`${day.date}-${index}`}
-                          className="w-full h-full rounded-2xl bg-[#E9E9EE]"
-                        ></div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </div>
