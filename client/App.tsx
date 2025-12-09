@@ -11,6 +11,7 @@ import Schedule from "./pages/Schedule";
 import Timetable from "./pages/Timetable";
 import Reminder from "./pages/Reminder";
 import Board from "./pages/Board";
+import BoardWrite from "./pages/BoardWrite";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/timetable" element={<Timetable />} />
           <Route path="/reminder" element={<Reminder />} />
           <Route path="/board" element={<Board />} />
+          <Route path="/board/write" element={<BoardWrite />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
