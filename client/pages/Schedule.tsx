@@ -1,21 +1,36 @@
 import BottomNav from "@/components/BottomNav";
 
 const scheduleDays = [
-  { date: 18, day: "Mon", badge: "2", type: "today" as const },
-  { date: 19, day: "Tue", badge: "1" },
+  { date: 18, day: "Mon", badge: "2", type: "today" as const, badgeColor: "#21283F" },
+  { date: 19, day: "Tue", badge: "1", badgeColor: "#F66B6B" },
   { date: 20, day: "Wed" },
-  { date: 21, day: "Thu", badge: "3" },
+  { date: 21, day: "Thu", badge: "3", badgeColor: "#4AD2C9" },
   { date: 22, day: "Fri" },
 ];
 
-const ReminderDot = ({ value }: { value?: string }) => {
+const ReminderDot = ({
+  value,
+  color = "#21283F",
+  variant = "solid",
+}: {
+  value?: string;
+  color?: string;
+  variant?: "solid" | "outline";
+}) => {
   if (!value) {
     return <div className="h-5" />;
   }
 
   return (
-    <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
-      <span className="text-[#21283F] text-xs font-bold">{value}</span>
+    <div
+      className={`w-5 h-5 rounded-full flex items-center justify-center ${
+        variant === "solid" ? "bg-white" : "bg-white border"
+      }`}
+      style={variant === "outline" ? { borderColor: color } : undefined}
+    >
+      <span className="text-xs font-bold" style={{ color }}>
+        {value}
+      </span>
     </div>
   );
 };
@@ -70,13 +85,17 @@ export default function Schedule() {
                 <div className="h-24 w-full max-w-[76px] rounded-3xl bg-[#80B3FF] px-2 py-2 flex flex-col items-center justify-between">
                   <div className="text-2xl font-bold text-white leading-none">{day.date}</div>
                   <div className="text-xs font-bold text-white">{day.day}</div>
-                  <ReminderDot value={day.badge} />
+                  <ReminderDot value={day.badge} color={day.badgeColor} variant="solid" />
                 </div>
               ) : (
                 <div className="h-24 w-full max-w-[72px] flex flex-col items-center justify-between py-2">
                   <div className="text-xl font-bold text-[#21283F] leading-none">{day.date}</div>
                   <div className="text-xs text-slate-400">{day.day}</div>
-                  <ReminderDot value={day.badge} />
+                  <ReminderDot
+                    value={day.badge}
+                    color={day.badgeColor ?? "#21283F"}
+                    variant={day.badge ? "outline" : "solid"}
+                  />
                 </div>
               )}
             </div>
