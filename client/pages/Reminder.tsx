@@ -251,7 +251,7 @@ export default function Reminder() {
       <button
         type="button"
         onClick={() => navigate("/reminder/add")}
-        className="fixed right-6 bottom-48 w-16 h-16 bg-[#80B3FF] rounded-full shadow-xl flex items-center justify-center"
+        className="fixed right-6 top-28 w-16 h-16 bg-[#80B3FF] rounded-full shadow-xl flex items-center justify-center"
       >
         <svg className="w-9 h-9 text-white" viewBox="0 0 20 20" fill="none">
           <path
