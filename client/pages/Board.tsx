@@ -158,6 +158,7 @@ export default function Board() {
             </svg>
           </div>
           <button
+            type="button"
             className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center"
             onClick={() => navigate("/board/write")}
           >
