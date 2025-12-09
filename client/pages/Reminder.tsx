@@ -25,9 +25,8 @@ export default function Reminder() {
         </div>
       </div>
 
-      {/* Header */}
-      <div className="px-6 py-4">
-        <h1 className="text-3xl font-bold text-[#010618]">리마인더</h1>
+      <div className="px-6 pt-4">
+        <h2 className="text-[32px] font-bold text-[#010618] tracking-tight">리마인더</h2>
       </div>
 
       {/* Content */}
