@@ -125,25 +125,25 @@ export default function Board() {
       {/* Segmented Control */}
       <div className="px-6 py-6">
         <div className="flex h-11 p-0.5 justify-center items-center rounded-3xl bg-[rgba(235,235,245,0.6)]">
-          {tabs.map((tab, index) => (
-            <Fragment key={tab}>
-              <button
-                onClick={() => handleTabChange(tab)}
-                className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
-                  selectedTab === tab ? "bg-[#80B3FF] shadow-sm" : "bg-transparent"
-                }`}
-              >
-                <span
-                  className={`text-sm ${
-                    selectedTab === tab ? "font-semibold text-white" : "font-normal text-[#010618]"
+          {tabs.map((tab, index) => {
+            const isActive = selectedTab === tab;
+            const isLast = index === tabs.length - 1;
+            return (
+              <div key={tab} className="flex flex-1 h-full items-center">
+                <button
+                  onClick={() => handleTabChange(tab)}
+                  className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
+                    isActive ? "bg-[#80B3FF] shadow-sm" : "bg-transparent"
                   }`}
                 >
-                  {tab}
-                </span>
-              </button>
-              {index < tabs.length - 1 && <div className="w-px h-3 bg-[#21283F] opacity-30 rounded-full" />}
-            </Fragment>
-          ))}
+                  <span className={`text-sm ${isActive ? "font-semibold text-white" : "font-normal text-[#010618]"}`}>
+                    {tab}
+                  </span>
+                </button>
+                {!isLast && <div className="w-px h-3 bg-[#21283F] opacity-30 rounded-full ml-2" aria-hidden />}
+              </div>
+            );
+          })}
         </div>
       </div>
 
