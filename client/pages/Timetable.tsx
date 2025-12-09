@@ -1,4 +1,5 @@
 import BottomNav from "@/components/BottomNav";
+import { useEffect, useRef } from "react";
 
 const classes = [
   { name: "수업 1", room: "1학년 1반", color: "bg-[#FF7D7F]" },
@@ -31,6 +32,55 @@ const days = [
   { date: 21, day: "Thu", isToday: false },
   { date: 22, day: "Fri", isToday: false },
 ];
+
+const AutoFitText = ({
+  text,
+  max = 12,
+  min = 8,
+  className,
+}: {
+  text: string;
+  max?: number;
+  min?: number;
+  className?: string;
+}) => {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const parent = element.parentElement;
+    if (!parent) return;
+
+    const adjust = () => {
+      const target = ref.current;
+      if (!target || !parent) return;
+      let size = max;
+      target.style.fontSize = `${size}px`;
+      while (size > min && target.scrollWidth > parent.clientWidth) {
+        size -= 0.5;
+        target.style.fontSize = `${size}px`;
+      }
+    };
+
+    adjust();
+
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver(adjust);
+      observer.observe(parent);
+      return () => observer.disconnect();
+    }
+
+    window.addEventListener("resize", adjust);
+    return () => window.removeEventListener("resize", adjust);
+  }, [max, min, text]);
+
+  return (
+    <span ref={ref} className={className} style={{ display: "block" }}>
+      {text}
+    </span>
+  );
+};
 
 export default function Timetable() {
   return (
@@ -95,7 +145,7 @@ export default function Timetable() {
             {timeSlots.map((slot, index) => (
               <div key={slot.label} className="flex flex-col gap-1">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
-                <div className="flex gap-1 items-stretch">
+                <div className="flex gap-0.5 items-stretch">
                   <div className="w-14 flex flex-col text-left text-[#010618] leading-tight">
                     <span className="text-sm font-semibold">{slot.label}</span>
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
@@ -106,14 +156,24 @@ export default function Timetable() {
                       <div key={`${day.date}-${slot.label}`} className="flex justify-center py-1.5">
                         {day.isToday && index < classes.length ? (
                           <div
-                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[10px] px-2 py-2 flex flex-col items-start justify-start gap-1 text-left`}
+                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[10px] px-2 py-2 flex flex-col items-start justify-between gap-1 text-left overflow-hidden`}
                           >
-                            <span className="text-[11px] font-semibold text-black leading-tight tracking-[-0.02em]">
-                              {classes[index].name}
-                            </span>
-                            <span className="text-[9px] font-medium text-[#010618] leading-tight tracking-[-0.01em]">
-                              {classes[index].room}
-                            </span>
+                            <div className="w-full">
+                              <AutoFitText
+                                text={classes[index].name}
+                                max={12}
+                                min={9}
+                                className="font-semibold text-black leading-tight tracking-[-0.02em]"
+                              />
+                            </div>
+                            <div className="w-full">
+                              <AutoFitText
+                                text={classes[index].room}
+                                max={9}
+                                min={7}
+                                className="text-[#010618] leading-tight tracking-[-0.01em]"
+                              />
+                            </div>
                           </div>
                         ) : (
                           <div className="w-full max-w-[54px] h-[54px] rounded-[10px] bg-[#E6E6F0]" />
