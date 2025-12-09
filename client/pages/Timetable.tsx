@@ -129,7 +129,7 @@ export default function Timetable() {
         <div className="w-full max-w-[420px] mx-auto flex flex-col gap-3.5">
           <div className="grid grid-cols-[48px_minmax(0,1fr)] gap-0 items-end">
             <div />
-            <div className="grid grid-cols-5 gap-1">
+            <div className="grid grid-cols-5 gap-3">
               {days.map((day) => (
                 <div key={day.date} className="flex flex-col items-center gap-1">
                   <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
