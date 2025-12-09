@@ -1,5 +1,18 @@
-import { useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
+const formatDisplayDate = (value: string) => {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+  const dayLabels = ["일", "월", "화", "수", "목", "금", "토"];
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const weekday = dayLabels[date.getDay()];
+  return `${year}/${month}/${day}(${weekday})`;
+};
 
 interface ReminderFormData {
   title: string;
@@ -24,12 +37,13 @@ export default function ReminderForm() {
   const navigate = useNavigate();
   const { id } = useParams();
   const isEditMode = !!id;
+  const dateInputRef = useRef<HTMLInputElement>(null);
 
   const [formData, setFormData] = useState<ReminderFormData>({
     title: "",
     classId: "5",
     description: "",
-    date: "2025/11/18(월)",
+    date: "2025-11-18",
     isImportant: false,
     allDay: true,
     alarm: true,
@@ -69,18 +83,18 @@ export default function ReminderForm() {
       </div>
 
       {/* Header with Cancel/Save */}
-      <div className="flex justify-between items-center px-6 py-3">
+      <div className="flex justify-between items-center px-6 py-3 mb-5">
         <button
           type="button"
           onClick={handleCancel}
-          className="text-sm text-[#80B3FF] font-normal"
+          className="text-base text-[#80B3FF] font-semibold"
         >
           취소
         </button>
         <button
           type="button"
           onClick={handleSave}
-          className="text-base text-[#80B3FF] font-bold"
+          className="text-base text-[#80B3FF] font-semibold"
         >
           저장
         </button>
@@ -92,11 +106,19 @@ export default function ReminderForm() {
           <h2 className="text-xl font-bold text-[#010618]">
             {isEditMode ? "리마인더 수정" : "새 리마인더"}
           </h2>
+          <button
+            type="button"
+            className="text-xl font-bold text-[#010618]"
+            onClick={() => dateInputRef.current?.showPicker()}
+          >
+            {formatDisplayDate(formData.date)}
+          </button>
           <input
-            type="text"
+            ref={dateInputRef}
+            type="date"
             value={formData.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-            className="px-3 py-1.5 text-sm border border-[#010618] rounded-lg text-[#010618]"
+            className="sr-only"
           />
         </div>
 
