@@ -145,7 +145,7 @@ export default function Timetable() {
             {timeSlots.map((slot, index) => (
               <div key={slot.label} className="flex flex-col gap-1">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
-                <div className="flex gap-0 items-stretch">
+                <div className="flex gap-3 items-stretch">
                   <div className="w-12 flex flex-col text-left text-[#010618] leading-tight">
                     <span className="text-sm font-semibold">{slot.label}</span>
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
