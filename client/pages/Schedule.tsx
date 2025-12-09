@@ -69,7 +69,7 @@ export default function Schedule() {
               <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
             </svg>
           </button>
-          <h1 className="text-xl font-bold text-center">2025 / 11</h1>
+          <h1 className="text-2xl font-bold text-[#010618]">2025 / 11</h1>
           <button className="p-2">
             <svg className="w-6 h-6 text-[#010618]" viewBox="0 0 24 24" fill="currentColor">
               <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
