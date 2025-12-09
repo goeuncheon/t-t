@@ -1,8 +1,6 @@
-import { useState } from "react";
 import BottomNav from "@/components/BottomNav";
 
 export default function Schedule() {
-  const [selectedTab, setSelectedTab] = useState("공지사항");
 
   return (
     <div className="min-h-screen bg-white pb-24">
@@ -73,60 +71,6 @@ export default function Schedule() {
             <div className="text-xl font-bold text-[#21283F]">22</div>
             <div className="text-xs text-slate-400">Fri</div>
           </div>
-        </div>
-      </div>
-
-      {/* Segmented Control */}
-      <div className="px-6 mb-6">
-        <div className="flex h-11 p-0.5 justify-center items-center rounded-3xl bg-[rgba(235,235,245,0.6)]">
-          <button
-            onClick={() => setSelectedTab("공지사항")}
-            className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
-              selectedTab === "공지사항" 
-                ? "bg-white shadow-sm" 
-                : "bg-transparent"
-            }`}
-          >
-            <span className={`text-sm ${
-              selectedTab === "공지사항" ? "font-semibold" : "font-normal"
-            } text-[#010618]`}>
-              공지사항
-            </span>
-          </button>
-          
-          <div className="w-px h-3 bg-[#21283F] opacity-30 rounded-full" />
-          
-          <button
-            onClick={() => setSelectedTab("행사")}
-            className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
-              selectedTab === "행사" 
-                ? "bg-white shadow-sm" 
-                : "bg-transparent"
-            }`}
-          >
-            <span className={`text-sm ${
-              selectedTab === "행사" ? "font-semibold" : "font-normal"
-            } text-[#010618]`}>
-              행사
-            </span>
-          </button>
-          
-          <div className="w-px h-3 bg-[#21283F] opacity-30 rounded-full" />
-          
-          <button
-            onClick={() => setSelectedTab("자료실")}
-            className={`flex-1 h-full flex items-center justify-center rounded-3xl transition-all ${
-              selectedTab === "자료실" 
-                ? "bg-white shadow-sm" 
-                : "bg-transparent"
-            }`}
-          >
-            <span className={`text-sm ${
-              selectedTab === "자료실" ? "font-semibold" : "font-normal"
-            } text-[#010618]`}>
-              자료실
-            </span>
-          </button>
         </div>
       </div>
 
