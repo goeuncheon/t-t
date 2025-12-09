@@ -126,10 +126,10 @@ export default function Timetable() {
 
       {/* Timetable */}
       <div className="flex-1 px-4 pb-4">
-        <div className="w-full max-w-[420px] mx-auto flex flex-col gap-4">
-          <div className="grid grid-cols-[56px_minmax(0,1fr)] gap-x-0 items-end">
+        <div className="w-full max-w-[420px] mx-auto flex flex-col gap-3.5">
+          <div className="grid grid-cols-[48px_minmax(0,1fr)] gap-0 items-end">
             <div />
-            <div className="grid grid-cols-5 gap-1.5">
+            <div className="grid grid-cols-5 gap-1">
               {days.map((day) => (
                 <div key={day.date} className="flex flex-col items-center gap-1">
                   <div className={`text-xl font-bold ${day.isToday ? "text-[#010618]" : "text-[#21283F]"}`}>
@@ -141,22 +141,22 @@ export default function Timetable() {
             </div>
           </div>
 
-          <div className="flex-1 flex flex-col gap-2">
+          <div className="flex-1 flex flex-col gap-1.5">
             {timeSlots.map((slot, index) => (
-              <div key={slot.label} className="flex flex-col gap-1">
+              <div key={slot.label} className="flex flex-col gap-0.5">
                 <div className="w-full h-px bg-[#21283F] opacity-40" />
-                <div className="grid grid-cols-[56px_minmax(0,1fr)] gap-x-0 items-center">
+                <div className="grid grid-cols-[48px_minmax(0,1fr)] gap-0 items-center">
                   <div className="flex flex-col text-left text-[#010618] leading-tight">
                     <span className="text-sm font-semibold">{slot.label}</span>
                     <span className="text-[10px] font-medium uppercase text-[#010618] opacity-80">{slot.period}</span>
                   </div>
 
-                  <div className="grid grid-cols-5 gap-1.5">
+                  <div className="grid grid-cols-5 gap-1">
                     {days.map((day) => (
-                      <div key={`${day.date}-${slot.label}`} className="flex justify-center py-1">
+                      <div key={`${day.date}-${slot.label}`} className="flex justify-center py-0.5">
                         {day.isToday && index < classes.length ? (
                           <div
-                            className={`${classes[index].color} w-full max-w-[56px] h-[56px] rounded-[10px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden`}
+                            className={`${classes[index].color} w-full max-w-[54px] h-[54px] rounded-[9px] px-1.5 py-1.5 flex flex-col items-start justify-start gap-0.5 text-left overflow-hidden`}
                           >
                             <div className="w-full">
                               <AutoFitText
@@ -176,7 +176,7 @@ export default function Timetable() {
                             </div>
                           </div>
                         ) : (
-                          <div className="w-full max-w-[56px] h-[56px] rounded-[10px] bg-[#E6E6F0]" />
+                          <div className="w-full max-w-[54px] h-[54px] rounded-[9px] bg-[#E6E6F0]" />
                         )}
                       </div>
                     ))}
