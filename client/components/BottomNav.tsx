@@ -52,7 +52,7 @@ export default function BottomNav({ currentPage }: BottomNavProps) {
         {/* 게시판 */}
         <Link
           to="/board"
-          className={`flex flex-col items-center gap-1.5 px-4 py-1 ${
+          className={`flex flex-col items-center gap-1.5 px-6 py-2 ${
             currentPage === "board" ? "text-[#80B3FF]" : "text-slate-600"
           }`}
         >
