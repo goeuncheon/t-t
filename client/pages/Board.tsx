@@ -28,9 +28,8 @@ export default function Board() {
         </div>
       </div>
 
-      {/* Header */}
-      <div className="px-6 py-4">
-        <h1 className="text-3xl font-bold text-[#010618]">게시판</h1>
+      <div className="px-6 pt-4">
+        <h2 className="text-[32px] font-bold text-[#010618] tracking-tight">게시판</h2>
       </div>
 
       {/* Segmented Control */}
